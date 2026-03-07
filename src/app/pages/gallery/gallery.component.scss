@@ -169,6 +169,7 @@
 .gallery-meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.6rem;
   margin-bottom: 0.5rem;
 }
@@ -184,6 +185,7 @@
 .gallery-date {
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.38);
+  margin-left: auto;
 }
 .gallery-section--newsletter-style .gallery-body h2 {
   font-size: 0.9rem;
@@ -196,6 +198,12 @@
 .gallery-cta {
   text-align: center;
   margin-top: 2.5rem;
+}
+.gallery-cta-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.25rem;
 }
 .btn-gallery-cta {
   display: inline-flex;

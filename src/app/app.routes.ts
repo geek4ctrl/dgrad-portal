@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'missions-services', component: ServicesComponent, title: 'Missions & Services – DGRAD' },
   { path: 'documentation', component: DocumentationComponent, title: 'Documentation – DGRAD' },
   { path: 'galerie', component: GalleryComponent, title: 'Galerie – DGRAD' },
+  { path: 'gallery', redirectTo: 'galerie', pathMatch: 'full' },
   { path: 'contact', component: ContactComponent, title: 'Contact – DGRAD' },
   { path: '**', redirectTo: '' }
 ];

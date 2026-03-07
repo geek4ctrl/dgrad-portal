@@ -116,42 +116,36 @@
           </div>
         }
       </div>
-      <!-- Right: category name + document list (name, year, Download) + preview -->
+      <!-- Right: category then only "All documents" (name → published → preview after published text) -->
       <div class="doc-viewer-right">
         <ng-container *ngIf="activeCategory as cat">
           <ng-container *ngIf="cat.documents.length > 0">
             <h3 class="doc-right-heading"><span class="doc-right-bullet">•</span> {{ cat.name }}</h3>
-            <div class="doc-entries">
+
+            <!-- All documents section only: no content before it. Each doc = name, published, then preview. -->
+            <button type="button" class="doc-list-toggle" (click)="toggleDocList()" [attr.aria-expanded]="docListExpanded">
+              All documents
+            </button>
+            <div class="doc-entries doc-entries--collapsible" [class.is-expanded]="docListExpanded">
               <div
                 *ngFor="let doc of cat.documents; let i = index"
-                class="doc-entry"
+                class="doc-item"
                 [class.is-selected]="selectedDocIndex === i"
               >
-                <div class="doc-entry-main" (click)="selectDocument(i)">
-                  <span class="doc-entry-icon">D</span>
-                  <div class="doc-entry-info">
-                    <span class="doc-entry-title">{{ doc.title }}</span>
-                    <span class="doc-entry-meta" *ngIf="doc.publishedYear">Published in {{ doc.publishedYear }}</span>
-                  </div>
+                <div class="doc-item-header" (click)="selectDocument(i)">
+                  <span class="doc-entry-title">{{ doc.title }}</span>
+                  <span class="doc-entry-meta" *ngIf="doc.publishedYear">Published in {{ doc.publishedYear }}</span>
                 </div>
-                <a
-                  [href]="doc.href && doc.href !== '#' ? doc.href : '#'"
-                  [attr.target]="doc.href && doc.href !== '#' ? '_blank' : null"
-                  [attr.rel]="doc.href && doc.href !== '#' ? 'noopener' : null"
-                  class="doc-entry-download"
-                  (click)="doc.href === '#' ? $event.preventDefault() : null"
-                >
-                  DOWNLOAD <span class="doc-download-arrow">↓</span>
-                </a>
+                <!-- Preview after the published text (for selected document) -->
+                <div class="doc-item-preview" *ngIf="selectedDocIndex === i">
+                  <div class="doc-preview-embed" *ngIf="isPdfDocument(doc)">
+                    <iframe [src]="getPdfSafeUrl(doc)" title="Preview of {{ doc.title }}" class="doc-preview-iframe"></iframe>
+                  </div>
+                  <a [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download" download>
+                    DOWNLOAD <span class="doc-download-arrow">↓</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="doc-preview" *ngIf="activeDocument as doc">
-              <h4 class="doc-preview-title">Preview</h4>
-              <p class="doc-preview-body">{{ doc.content || doc.description }}</p>
-              <a *ngIf="doc.href && doc.href !== '#'" [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download">
-                DOWNLOAD <span class="doc-download-arrow">↓</span>
-              </a>
-              <p *ngIf="!doc.href || doc.href === '#'" class="doc-preview-placeholder">Document link will be provided when available.</p>
             </div>
           </ng-container>
           <div class="doc-empty" *ngIf="cat.documents.length === 0">

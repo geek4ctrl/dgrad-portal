@@ -24,9 +24,9 @@
       </p>
     </div>
     <div class="gallery-grid gallery-grid--cards">
-      <article class="gallery-card" *ngFor="let item of items">
+        <article class="gallery-card" *ngFor="let item of items">
         <div class="gallery-image">
-          <img [src]="item.image" [alt]="item.title" />
+          <img [src]="item.image" [alt]="item.title" (error)="onImageError(item)" />
         </div>
         <div class="gallery-body">
           <div class="gallery-meta">
@@ -38,6 +38,7 @@
       </article>
     </div>
     <div class="gallery-cta">
+      <h3 class="gallery-cta-heading">Vous souhaitez obtenir plus d'informations sur nos déploiements ?</h3>
       <a routerLink="/contact" class="btn-gallery-cta">Nous contacter</a>
     </div>
   </div>

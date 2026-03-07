@@ -1,0 +1,124 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[6].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[6].rules[1].use[1]!./src/styles.scss?ngGlobalStyle ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  /* DGRAD/LOGIRAD design tokens (used by header, footer, home) */
+  --navy: #0d1b2e;
+  --navy-mid: #152440;
+  --navy-light: #1e3458;
+  --gold: #c9a84c;
+  --gold-light: #e4c776;
+  --gold-pale: #f5e9c8;
+  --cream: #faf8f3;
+  --white: #ffffff;
+  --muted: #8a96a8;
+  --text: #1c2430;
+  --ff-display: "Playfair Display", Georgia, serif;
+  --ff-body: "DM Sans", system-ui, sans-serif;
+  --r-sm: 0.5rem;
+  --r-md: 0.875rem;
+  --r-lg: 1.5rem;
+  --shadow-sm: 0 2px 12px rgba(13, 27, 46, 0.08);
+  --shadow-md: 0 8px 32px rgba(13, 27, 46, 0.14);
+  --color-primary: #003366;
+  --color-primary-dark: #001a33;
+  --color-accent: #ffd85a;
+  --color-accent-light: #ffe894;
+  --color-accent-dark: #c49b1f;
+  --color-background: #f3f5fa;
+  --color-surface: #f8f9fc;
+  --color-surface-alt: #edf1fa;
+  --color-white: #ffffff;
+  --color-text-main: #1c2430;
+  --color-text-muted: #5c6573;
+  /* DGRAD/LOGIRAD design tokens (header, footer, home) */
+  --navy: #0d1b2e;
+  --navy-mid: #152440;
+  --navy-light: #1e3458;
+  --gold: #c9a84c;
+  --gold-light: #e4c776;
+  --gold-pale: #f5e9c8;
+  --shadow-sm: 0 2px 12px rgba(13, 27, 46, 0.08);
+  --ff-display: "Playfair Display", Georgia, serif;
+  --ff-body: "DM Sans", system-ui, sans-serif;
+  --r-sm: 0.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --shadow-card: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.18);
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background: radial-gradient(circle at top, #f0f4ff 0, #f3f5fa 40%, #f9fafb 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin-top: 0;
+  color: var(--color-primary-dark);
+}
+
+p {
+  line-height: 1.6;
+}
+
+.section-header {
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.section-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map*/

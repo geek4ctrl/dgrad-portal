@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface DocItem {
   title: string;
@@ -37,28 +38,39 @@ export class DocumentationComponent implements OnInit {
     {
       id: 'user-manual',
       name: 'User manual',
-      count: 3,
+      count: 4,
       documents: [
         {
-          title: 'User Manual - Controllers and Receivers - LOGIRAD v29-06-2022',
-          description: 'Guide for controllers and receivers: control, verification, recovery and clearance procedures.',
-          content: 'This user manual describes the procedures for controllers and receivers in LOGIRAD: conformity checks, non-conformity reports, recovery, clearance, discharge certificates and enforcement. It covers access to taxation, authorisation and payment registers.',
-          publishedYear: 2022,
-          href: '#'
-        },
-        {
-          title: 'User Manual - Tax Authorizers and Authorizers - LOGIRAD v29-06-2022',
-          description: 'Guide for tax authorizers and authorizing officers: payment notices and orders.',
-          content: 'This manual covers the issuance and management of payment notices and payment orders, consultation of related registers, and special or ex-officio authorisations for LOGIRAD users.',
-          publishedYear: 2022,
-          href: '#'
-        },
-        {
-          title: 'User Manual - LOGIRAD v2.0.1.02',
-          description: 'Documentation fonctionnelle sur l\'outil informatique utilisé pour la gestion des recettes non fiscales.',
-          content: 'Functional documentation of the LOGIRAD software: modules (subjects, declarations, files, taxation, authorizations, control, recovery, litigation), user profiles, security and key business processes. Official resources and documents of LOGIRAD.',
+          title: 'LOGIRAD User Manual (EN)',
+          description: 'Official LOGIRAD user manual in English.',
+          content: 'Official LOGIRAD user manual in English. Preview and download below.',
           publishedYear: 2024,
-          href: '#'
+          href: 'assets/documents/LOGIRAD_User_Manual_EN.pdf',
+          previewUrl: 'assets/documents/LOGIRAD_User_Manual_EN.pdf'
+        },
+        {
+          title: 'LOGIRAD User Manual EN (v2)',
+          description: 'LOGIRAD user manual in English – second edition.',
+          content: 'LOGIRAD user manual in English – second edition. Preview and download below.',
+          publishedYear: 2024,
+          href: 'assets/documents/LOGIRAD_User_Manual_EN-2.pdf',
+          previewUrl: 'assets/documents/LOGIRAD_User_Manual_EN-2.pdf'
+        },
+        {
+          title: "Manuel d'utilisateur – Taxateur",
+          description: 'Guide opérationnel pour les agents chargés de la taxation et de la liquidation des droits et redevances.',
+          content: "Manuel d'utilisateur pour les taxateurs. Prévisualisez et téléchargez le document ci-dessous.",
+          publishedYear: 2022,
+          href: 'assets/documents/Manuel-utilisateur-taxateur.pdf',
+          previewUrl: 'assets/documents/Manuel-utilisateur-taxateur.pdf'
+        },
+        {
+          title: 'Organigramme DGRAD',
+          description: 'Organisation chart of the DGRAD.',
+          content: 'Organigramme de la Direction Générale des Recettes Administratives, Judiciaires, Domaniales et de Participations. Preview and download below.',
+          publishedYear: 2024,
+          href: 'assets/documents/ORGANIGRAMME-DGRAD.pdf',
+          previewUrl: 'assets/documents/ORGANIGRAMME-DGRAD.pdf'
         }
       ]
     },
@@ -262,8 +274,18 @@ export class DocumentationComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
     this.updateCurrentSelection();
+  }
+
+  isPdfDocument(doc: DocItem): boolean {
+    const url = doc.previewUrl || doc.href || '';
+    return url.toLowerCase().endsWith('.pdf');
+  }
+
+  getPdfSafeUrl(doc: DocItem): SafeResourceUrl {
+    const url = doc.previewUrl || doc.href || '';
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   ngOnInit(): void {
@@ -279,6 +301,12 @@ export class DocumentationComponent implements OnInit {
   selectDocument(index: number): void {
     this.selectedDocIndex = index;
     this.updateCurrentSelection();
+  }
+
+  /** Collapsible "All documents" list – toggled by clicking the label. */
+  docListExpanded = false;
+  toggleDocList(): void {
+    this.docListExpanded = !this.docListExpanded;
   }
 
   private updateCurrentSelection(): void {
