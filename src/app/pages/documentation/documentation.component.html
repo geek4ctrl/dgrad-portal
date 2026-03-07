@@ -1,0 +1,164 @@
+<!-- ── First section: same layout as Contact US ───────── -->
+<section class="page-hero page-hero--contact-style">
+  <div class="hero-bg" style="background-image: url('assets/DOCUMENTATION-bb206954-fb72-4632-a1b3-97f01e747348.png');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-left-block">
+      <h1>DOCUMENTATION</h1>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-right-block">
+      <p>Official resources and documents of LOGIRAD.<br/>User manuals, regulatory texts and support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── General information: in card ─────────────────────── -->
+<section class="docs-extra">
+  <div class="container container--narrow">
+    <div class="info-card">
+      <div class="section-header-center">
+        <div class="section-kicker">General information</div>
+        <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
+        <p class="section-sub">
+          LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
+          taxation, authorizations, control, recovery and litigation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── User profiles: in card ──────────────────────────── -->
+<section class="docs-extra">
+  <div class="container container--narrow">
+    <div class="info-card">
+      <div class="section-header-center">
+        <div class="section-kicker">User profiles</div>
+        <h2 class="section-title">User profiles in LOGIRAD</h2>
+        <p class="section-sub">
+          Access is strictly controlled through predefined user profiles, each with specific responsibilities and permissions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Security &amp; access: in card (with resource links inside) ── -->
+<section class="docs-extra">
+  <div class="container container--narrow">
+    <div class="info-card">
+      <div class="section-header-center">
+        <div class="section-kicker">Security &amp; access</div>
+        <h2 class="section-title">Security, warnings and precautions</h2>
+        <p class="section-sub">
+          The manuals insist on a secure and responsible use of LOGIRAD by all authorized users.
+        </p>
+      </div>
+      <ul class="bullet-list bullet-list--standalone">
+        <li *ngFor="let item of securityPoints">{{ item }}</li>
+      </ul>
+      <div class="resource-links-in-card">
+        <p class="resource-links-item">
+          LOGIRAD web application:
+          <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener">https://logirad.dgrad.cd</a>
+        </p>
+        <p class="resource-links-item">
+          Latest manuals and resources:
+          <a href="http://portail.dgrad.cd" target="_blank" rel="noopener">portail.dgrad.cd</a>
+        </p>
+        <p class="resource-links-item">
+          Technical support:
+          <a href="mailto:support.logirad&#64;dgrad.cd">support.logirad&#64;dgrad.cd</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Processes: in card ──────────────────────────────── -->
+<section class="docs-extra">
+  <div class="container container--narrow">
+    <div class="info-card">
+      <div class="section-header-center">
+        <div class="section-kicker">Processes</div>
+        <h2 class="section-title">Key business processes</h2>
+        <p class="section-sub">
+          LOGIRAD structures the revenue chain into a series of linked processes, from subject registration to dispute resolution.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Resources / Documentation Center (ref: portail.dgrad.cd/documentation) ── -->
+<section class="docs-extra docs-extra--centre">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Resources</div>
+      <h2 class="section-title">Documentation Center</h2>
+      <p class="section-sub">
+        Official resources and documents of LOGIRAD.
+      </p>
+    </div>
+    <div class="doc-viewer" *ngIf="docCategories.length > 0">
+      <!-- Left: CATEGORIES with count pills -->
+      <div class="doc-viewer-left">
+        <h3 class="doc-panel-heading">CATEGORIES</h3>
+        @for (cat of docCategories; track cat.id; let i = $index) {
+          <div
+            class="doc-category-row"
+            [class.is-selected]="selectedCategoryIndex === i"
+            (click)="selectCategory(i)"
+          >
+            <span class="doc-category-name">{{ cat.name }}</span>
+            <span class="doc-category-count">{{ cat.count }}</span>
+          </div>
+        }
+      </div>
+      <!-- Right: category name + document list (name, year, Download) + preview -->
+      <div class="doc-viewer-right">
+        <ng-container *ngIf="activeCategory as cat">
+          <ng-container *ngIf="cat.documents.length > 0">
+            <h3 class="doc-right-heading"><span class="doc-right-bullet">•</span> {{ cat.name }}</h3>
+            <div class="doc-entries">
+              <div
+                *ngFor="let doc of cat.documents; let i = index"
+                class="doc-entry"
+                [class.is-selected]="selectedDocIndex === i"
+              >
+                <div class="doc-entry-main" (click)="selectDocument(i)">
+                  <span class="doc-entry-icon">D</span>
+                  <div class="doc-entry-info">
+                    <span class="doc-entry-title">{{ doc.title }}</span>
+                    <span class="doc-entry-meta" *ngIf="doc.publishedYear">Published in {{ doc.publishedYear }}</span>
+                  </div>
+                </div>
+                <a
+                  [href]="doc.href && doc.href !== '#' ? doc.href : '#'"
+                  [attr.target]="doc.href && doc.href !== '#' ? '_blank' : null"
+                  [attr.rel]="doc.href && doc.href !== '#' ? 'noopener' : null"
+                  class="doc-entry-download"
+                  (click)="doc.href === '#' ? $event.preventDefault() : null"
+                >
+                  DOWNLOAD <span class="doc-download-arrow">↓</span>
+                </a>
+              </div>
+            </div>
+            <div class="doc-preview" *ngIf="activeDocument as doc">
+              <h4 class="doc-preview-title">Preview</h4>
+              <p class="doc-preview-body">{{ doc.content || doc.description }}</p>
+              <a *ngIf="doc.href && doc.href !== '#'" [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download">
+                DOWNLOAD <span class="doc-download-arrow">↓</span>
+              </a>
+              <p *ngIf="!doc.href || doc.href === '#'" class="doc-preview-placeholder">Document link will be provided when available.</p>
+            </div>
+          </ng-container>
+          <div class="doc-empty" *ngIf="cat.documents.length === 0">
+            <p>No documents in this category.</p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

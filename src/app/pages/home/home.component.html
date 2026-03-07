@@ -1,0 +1,246 @@
+
+
+<!-- ── Hero ─────────────────────────────────────────── -->
+<section class="hero">
+  <!-- FIX: inline style binding so Angular resolves the asset path correctly at runtime -->
+  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          {{ activeSlide.date }}
+        </div>
+        <h1 class="hero-headline" [innerHTML]="activeSlide.title"></h1>
+        <p class="hero-sub">{{ activeSlide.sub }}</p>
+        <div class="hero-ctas">
+          <a routerLink="/documentation" class="btn-hero-primary">📄 Nos documentations</a>
+          <a routerLink="/contact" class="btn-hero-outline">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-image-wrap">
+          <img
+            [src]="activeSlide.image"
+            [alt]="activeSlide.title | stripHtml"
+          />
+          <div class="hero-indicators">
+            <div class="hero-indicator-dots">
+              @for (slide of slides; track slide.date; let i = $index) {
+                <button
+                  type="button"
+                  class="hero-dot"
+                  [class.is-active]="activeIndex === i"
+                  (click)="setSlide(i)"
+                  aria-label="Aller au slide {{ i + 1 }}"
+                ></button>
+              }
+            </div>
+            <span class="hero-indicator-count">
+              {{ activeIndex + 1 }} / {{ slides.length }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ─────────────────────────────────────────── -->
+<div class="stats-bar-wrap">
+  <div class="container">
+    <div class="stats-bar">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <span class="stat-val">{{ stat.value }}</span>
+          <span class="stat-lbl">{{ stat.label }}</span>
+          <div class="stat-divider"></div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- ── What We Offer ─────────────────────────────────── -->
+<section class="section offer" id="services">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Ce que nous offrons</div>
+      <h2 class="section-title">UNE CHAÎNE NUMÉRISÉE DE BOUT EN BOUT</h2>
+      <p class="section-sub">
+        LOGIRAD est le logiciel intégré de gestion des recettes non fiscales administré par la DGRAD.
+        Il couvre l’assiette, la liquidation, l’ordonnancement, le recouvrement, le contrôle, les exonérations
+        et la gestion du contentieux, ainsi que la production de tableaux de bord. Son objectif est de
+        digitaliser l’ensemble de la procédure de collecte des droits, taxes et redevances du Gouvernement central.
+      </p>
+    </div>
+    <div class="offer-grid">
+      @for (card of offerCards; track card.title) {
+        <div class="offer-card">
+          <div class="offer-thumb">
+            <div class="offer-thumb-icon">{{ card.icon }}</div>
+          </div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Integrated Services / Functional modules ────── -->
+<section class="section services-section" id="documentation">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Functional modules</div>
+      <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
+      <p class="section-sub">
+        LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
+        taxation, authorizations, control, recovery and litigation.
+      </p>
+    </div>
+    <div class="services-grid">
+      @for (svc of serviceCards; track svc.title) {
+        <div class="svc-card">
+          <div class="svc-icon-wrap">{{ svc.icon }}</div>
+          <h4>{{ svc.title }}</h4>
+          <ul>
+            @for (item of svc.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── National deployment / Extension of the LOGIRAD paperless procedure ─── -->
+<section class="section extension">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">National deployment</div>
+      <h2 class="section-title">Extension of the LOGIRAD paperless procedure</h2>
+      <p class="section-sub">
+        In accordance with government guidelines, the use of the platform becomes the mandatory
+        standard to optimize the mobilization of non-tax revenues.
+      </p>
+    </div>
+    <div class="ext-grid">
+      <div class="ext-map-wrap">
+        <div class="ext-map-card">
+          <div class="map-inner">
+            <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M150,20 L210,35 L260,60 L275,110 L265,160 L250,200
+                   L220,240 L175,260 L130,255 L85,240 L50,210 L30,170
+                   L25,130 L40,85 L70,50 L110,28 Z"
+                fill="rgba(201,168,76,.12)"
+                stroke="rgba(201,168,76,.55)"
+                stroke-width="1.5"
+              />
+              <circle cx="148" cy="90"  r="4" fill="#c9a84c" opacity=".9"/>
+              <circle cx="175" cy="120" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="120" cy="130" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="155" cy="155" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="190" cy="145" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="130" cy="170" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="165" cy="185" r="3" fill="#c9a84c" opacity=".7"/>
+              <circle cx="100" cy="155" r="3" fill="rgba(201,168,76,.4)"/>
+              <circle cx="200" cy="170" r="3" fill="rgba(201,168,76,.4)"/>
+              <circle cx="80"  cy="120" r="3" fill="rgba(201,168,76,.4)"/>
+              <text x="150" y="225" fill="rgba(255,255,255,.3)" font-size="9"
+                    text-anchor="middle" font-family="sans-serif">
+                République Démocratique du Congo
+              </text>
+            </svg>
+            <div class="map-badge">Déploiement national en cours</div>
+            <div class="ext-map-pills">
+              <div class="ext-map-pill">
+                <span class="pill-dot"></span>
+                <div>
+                  <p class="pill-title">Procédure dématérialisée</p>
+                  <p class="pill-sub">Notes d’imposition, avis de paiement et recouvrement gérés en ligne.</p>
+                </div>
+              </div>
+              <div class="ext-map-pill">
+                <span class="pill-dot"></span>
+                <div>
+                  <p class="pill-title">Couverture nationale progressive</p>
+                  <p class="pill-sub">Déploiement par vagues dans l’ensemble des 26 provinces.</p>
+                </div>
+              </div>
+              <div class="ext-map-pill">
+                <span class="pill-dot"></span>
+                <div>
+                  <p class="pill-title">Interopérabilité avec ISYS‑Régies</p>
+                  <p class="pill-sub">Chaîne informatisée des recettes, de l’encaissement à la trésorerie.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="ext-note">
+          <strong>Continual education :</strong> Plus de 516 agents formés en 2024,
+          incluant 157 pour le Kasaï Oriental/Lomami/Sankuru à Mbuji-Mayi.
+        </p>
+      </div>
+      <div class="ext-right">
+        <div class="ext-info-card">
+          <div class="ext-info-grid">
+            <div class="ext-info-col">
+              <div class="ext-services-label"><span></span> Assessment services</div>
+              <div class="ext-chips">
+                @for (chip of assietteServices; track chip) {
+                  <span class="ext-chip">{{ chip }}</span>
+                }
+              </div>
+            </div>
+            <div class="ext-info-col">
+              <div class="ext-services-label"><span></span> Provinces in scope</div>
+              <div class="ext-phases">
+                @for (phase of phases; track phase.label) {
+                  <div class="ext-phase">
+                    <div class="ext-phase-label">{{ phase.label }}</div>
+                    <p>{{ phase.provinces }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Newsletter ─────────────────────────────────────── -->
+<section class="newsletter section" id="gallery">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Actualités</div>
+      <h2 class="section-title">NEWSLETTER</h2>
+    </div>
+    <div class="news-grid">
+      @for (item of newsItems; track item.title) {
+        <div class="news-card">
+          <div class="news-img" [style.background]="item.bg">
+            <span>{{ item.icon }}</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span class="news-type">{{ item.type }}</span>
+              <span class="news-date">{{ item.date }}</span>
+            </div>
+            <h3>{{ item.title }}</h3>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="newsletter-cta">
+      <button class="btn-more">Voir plus d'actualités →</button>
+    </div>
+  </div>
+</section>
+

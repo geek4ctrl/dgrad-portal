@@ -1,0 +1,115 @@
+.page-hero {
+  padding: 4rem 0 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 51, 102, 0.06),
+    rgba(0, 51, 102, 0.01)
+  );
+}
+
+.page-hero-text {
+  max-width: 720px;
+  color: var(--color-text-muted);
+}
+
+.services-section {
+  padding: 3rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--color-surface-alt);
+  padding: 2rem 1.75rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.service-card:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.service-card:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.assiette {
+  padding: 3rem 0 4rem;
+  background: var(--color-surface);
+}
+
+.assiette-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .assiette-grid {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.assiette-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.assiette-list li {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: var(--color-white);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.assiette-panel {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.assiette-panel .phase {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.05);
+}
+
+.assiette-panel h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.assiette-panel p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+

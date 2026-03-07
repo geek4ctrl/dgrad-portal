@@ -1,0 +1,132 @@
+
+
+/* ── Sticky header wrapper: always on top ───────────── */
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: block;
+}
+
+/* ── Topbar ─────────────────────────────────────────── */
+.topbar {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.45rem 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+}
+.topbar-socials {
+  display: flex;
+  gap: 0.7rem;
+  a {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #060f1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition:
+      background 0.2s,
+      color 0.2s;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    &:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+  }
+}
+
+/* ── Navbar ─────────────────────────────────────────── */
+.navbar {
+  background: var(--white);
+  box-shadow:
+    0 1px 0 rgba(13, 27, 46, 0.07),
+    var(--shadow-sm);
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--navy);
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 20px;
+    fill: var(--gold);
+  }
+}
+.nav-logo-text {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  color: var(--navy);
+  font-weight: 700;
+  span {
+    color: var(--gold);
+  }
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  a {
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--r-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    transition: background 0.15s;
+    &:hover {
+      background: rgba(13, 27, 46, 0.06);
+    }
+    &.active {
+      background: var(--gold-pale);
+      font-weight: 600;
+    }
+  }
+}
+.btn-access {
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  padding: 0.45rem 1.1rem !important;
+  border-radius: var(--r-sm) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  transition: background 0.2s !important;
+  &:hover {
+    background: var(--navy-light) !important;
+  }
+}

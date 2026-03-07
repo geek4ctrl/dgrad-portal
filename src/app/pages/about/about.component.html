@@ -1,0 +1,131 @@
+<section class="page-hero">
+  <div class="container">
+    <p class="section-kicker">Institution</p>
+    <h1>La DGRAD, pilier des recettes non fiscales de l’État</h1>
+    <p class="page-hero-text">
+      La Direction Générale des Recettes Administratives, Judiciaires, Domaniales et de Participations
+      (DGRAD) est un service public spécialisé chargé de la mobilisation des recettes non fiscales en
+      République Démocratique du Congo. Elle pilote notamment le logiciel intégré de gestion des recettes
+      non fiscales <strong>LOGIRAD</strong>.
+    </p>
+  </div>
+</section>
+
+<section class="about-grid">
+  <div class="container grid">
+    <article class="about-intro card">
+      <h2>Rôle institutionnel</h2>
+      <p>
+        Placée sous la tutelle du Ministère des Finances, la DGRAD agit en aval pour assurer le suivi, la
+        programmation et le recouvrement des recettes non fiscales générées par les services publics de l’État.
+      </p>
+      <p>
+        Elle intervient en collaboration avec les ministères sectoriels, les entreprises publiques et les
+        services d’assiette afin de garantir la conformité des procédures et l’optimisation des ressources
+        mobilisées.
+      </p>
+    </article>
+
+    <aside class="about-highlights">
+      <article class="highlight-card" *ngFor="let item of highlights">
+        <figure class="highlight-image">
+          <img [src]="item.image" [alt]="item.title" />
+        </figure>
+        <div class="highlight-body">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </div>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<section class="about-mandate">
+  <div class="container">
+    <div class="section-header">
+      <h2>Mandat général</h2>
+      <p>
+        La DGRAD est au cœur de la politique de mobilisation des recettes non fiscales, de leur sécurisation et
+        de leur transparence. À travers LOGIRAD, elle porte la chaîne informatisée des recettes décrite dans les
+        manuels utilisateurs officiels.
+      </p>
+    </div>
+    <div class="mandate-grid">
+      <article class="mandate-card">
+        <h3>Assiette et programmation</h3>
+        <p>
+          Participation à la définition de l’assiette des recettes administratives, judiciaires, domaniales et
+          de participations et à la programmation des objectifs de mobilisation.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Suivi et recouvrement</h3>
+        <p>
+          Suivi du déroulement des opérations de recouvrement et centralisation des informations pour
+          l’amélioration des performances de mobilisation.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Modernisation et digitalisation</h3>
+        <p>
+          Promotion des outils numériques et des plateformes sécurisées, dont LOGIRAD, pour fiabiliser la
+          collecte, le suivi des titres et le reporting des recettes non fiscales.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Transparence et redevabilité</h3>
+        <p>
+          Renforcement des mécanismes de contrôle et de traçabilité au bénéfice du Trésor public et des
+          citoyens.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="about-mandate">
+  <div class="container">
+    <div class="section-header">
+      <h2>LOGIRAD dans l’écosystème DGRAD</h2>
+      <p>
+        Mis en œuvre à partir de 2019 et rendu obligatoire par le décret n°22/18 du 4 mai 2022, LOGIRAD est
+        la solution de référence pour gérer l’assiette, la taxation, l’ordonnancement, le recouvrement, le
+        contrôle et le contentieux des recettes non fiscales.
+      </p>
+    </div>
+    <div class="mandate-grid">
+      <article class="mandate-card">
+        <h3>Modules principaux</h3>
+        <p>
+          LOGIRAD comprend des modules dédiés à l’administration, à l’utilisateur, à la pré‑production, à la
+          formation et aux échanges de données (API) avec les banques, la BCC, la DGI et les services
+          d’assiette.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Profils utilisateurs</h3>
+        <p>
+          Des profils standard sont prévus, notamment : administrateur, assesseur, chef assesseur, contrôleur,
+          ordonnateur, receveur et consultation, chacun avec des droits adaptés à ses responsabilités.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Sécurité et conformité</h3>
+        <p>
+          L’accès est sécurisé par des identifiants personnels et des mots de passe, avec des règles de
+          confidentialité et de qualité des données conformes aux procédures du Ministère des Finances et de
+          la DGRAD.
+        </p>
+      </article>
+      <article class="mandate-card">
+        <h3>Accès et support</h3>
+        <p>
+          L’application web est accessible via <strong>https://logirad.dgrad.cd</strong>, et la documentation à jour est
+          disponible sur le portail <strong>portail.dgrad.cd</strong>. Pour toute assistance, un support dédié est joignable
+          à l’adresse <strong>support.logirad&#64;dgrad.cd</strong>.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+

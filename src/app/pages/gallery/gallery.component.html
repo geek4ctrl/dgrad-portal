@@ -1,0 +1,44 @@
+<!-- ── Hero: same structure as Contact / newsletter section ── -->
+<section class="page-hero page-hero--gallery">
+  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-left-block">
+      <h1>GALERIE<br/>PHOTOS</h1>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-right-block">
+      <p>Retrouvez en images les moments forts des formations LOGIRAD à travers la République Démocratique du Congo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Gallery grid: newsletter-style (navy, cards) ───────── -->
+<section class="gallery-section gallery-section--newsletter-style">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Formations</div>
+      <h2 class="section-title">MOMENTS FORTS LOGIRAD</h2>
+      <p class="section-sub">
+        Formations et déploiements LOGIRAD dans les provinces.
+      </p>
+    </div>
+    <div class="gallery-grid gallery-grid--cards">
+      <article class="gallery-card" *ngFor="let item of items">
+        <div class="gallery-image">
+          <img [src]="item.image" [alt]="item.title" />
+        </div>
+        <div class="gallery-body">
+          <div class="gallery-meta">
+            <span class="gallery-tag">{{ item.category }}</span>
+            <span class="gallery-date">{{ item.date }}</span>
+          </div>
+          <h2>{{ item.title }}</h2>
+        </div>
+      </article>
+    </div>
+    <div class="gallery-cta">
+      <a routerLink="/contact" class="btn-gallery-cta">Nous contacter</a>
+    </div>
+  </div>
+</section>

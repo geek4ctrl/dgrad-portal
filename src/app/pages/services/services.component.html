@@ -1,0 +1,55 @@
+<section class="page-hero">
+  <div class="container">
+    <p class="section-kicker">Missions &amp; Services</p>
+    <h1>Une plateforme complète pour la mobilisation des recettes non fiscales</h1>
+    <p class="page-hero-text">
+      La DGRAD centralise les outils et compétences nécessaires pour organiser l’assiette, le contrôle et le
+      recouvrement des recettes non fiscales.
+    </p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="services-grid">
+      <article class="service-card" *ngFor="let service of mainServices">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="assiette">
+  <div class="container assiette-grid">
+    <div>
+      <div class="section-kicker">Services d’assiette</div>
+      <h2>Une collaboration étroite avec les services générateurs de recettes</h2>
+      <p>
+        La DGRAD travaille en synergie avec les administrations sectorielles pour sécuriser la chaîne des
+        recettes non fiscales, depuis l’émission de la créance jusqu’au recouvrement effectif.
+      </p>
+      <ul class="assiette-list">
+        <li *ngFor="let item of assietteServices">{{ item }}</li>
+      </ul>
+    </div>
+
+    <div class="assiette-panel">
+      <h3>Déploiement national</h3>
+      <p>
+        Le dispositif de mobilisation des recettes est progressivement étendu à l’ensemble des provinces de la
+        République Démocratique du Congo.
+      </p>
+      <div class="phase">
+        <h4>Phase 1</h4>
+        <p>{{ provincesPhase1 }}</p>
+      </div>
+      <div class="phase">
+        <h4>Phase 2</h4>
+        <p>{{ provincesPhase2 }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
