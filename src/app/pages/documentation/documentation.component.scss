@@ -60,6 +60,36 @@
   max-width: 360px;
 }
 
+@media (max-width: 640px) {
+  .page-hero--contact-style {
+    min-height: auto;
+  }
+  .page-hero--contact-style .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  .page-hero--contact-style .hero-left-block {
+    padding-right: 0;
+  }
+  .page-hero--contact-style .hero-left-block h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+  .page-hero--contact-style .hero-divider {
+    width: 100%;
+    height: 1px;
+    flex: none;
+    margin: 0;
+  }
+  .page-hero--contact-style .hero-right-block {
+    padding-left: 0;
+  }
+  .page-hero--contact-style .hero-right-block p {
+    max-width: none;
+  }
+}
+
 .page-hero {
   position: relative;
   padding: 5rem 0 4rem;
@@ -345,6 +375,9 @@
 /* ── Extra sections derived from manuals ───────────────── */
 .docs-extra {
   padding: 0 0 4rem;
+  @media (max-width: 480px) {
+    padding: 0 0 2.5rem;
+  }
 }
 
 .docs-extra-grid {
@@ -481,6 +514,25 @@
 @media (max-width: 768px) {
   .doc-viewer {
     grid-template-columns: 1fr;
+    min-height: 280px;
+  }
+}
+@media (max-width: 480px) {
+  .doc-list-toggle {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .doc-entries--collapsible {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+  .doc-preview-iframe {
+    min-height: 320px;
+    height: 50vh;
+  }
+  .doc-right-heading {
+    padding-left: 1rem;
   }
 }
 .doc-panel-heading {

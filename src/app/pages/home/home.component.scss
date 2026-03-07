@@ -36,6 +36,9 @@
   align-items: center;
   overflow: hidden;
   background: var(--navy);
+  @media (max-width: 640px) {
+    min-height: auto;
+  }
 }
 /* NOTE: background-image is set via inline style in the template.
    Only position/size/opacity are set here. */
@@ -62,6 +65,9 @@
   z-index: 3;
   width: 100%;
   padding: 6rem 0 4rem;
+  @media (max-width: 640px) {
+    padding: 4rem 0 3rem;
+  }
 }
 .hero-inner {
   display: grid;
@@ -312,6 +318,12 @@
 /* ── Section common ─────────────────────────────────── */
 .section {
   padding: 5rem 0;
+  @media (max-width: 768px) {
+    padding: 3.5rem 0;
+  }
+  @media (max-width: 480px) {
+    padding: 2.5rem 0;
+  }
 }
 .section-kicker {
   display: flex;

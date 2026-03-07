@@ -1,4 +1,5 @@
 <header class="header-sticky">
+<div class="nav-backdrop" [class.is-visible]="isMenuOpen" (click)="closeMenu()" aria-hidden="true"></div>
 <!-- ── Topbar ─────────────────────────────────────────── -->
 <div class="topbar">
   <div class="container topbar-inner">
@@ -17,17 +18,22 @@
 <!-- ── Navbar ─────────────────────────────────────────── -->
 <nav class="navbar">
   <div class="container navbar-inner">
-    <a routerLink="/" class="nav-logo">
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
       <div class="nav-logo-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.236L20 8.5v7L12 19.764 4 15.5v-7L12 4.236z"/></svg>
       </div>
       <div class="nav-logo-text">DGRAD <span>LOGIRAD</span></div>
     </a>
-    <div class="nav-links">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
-      <a routerLink="/galerie" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Galerie</a>
-      <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contact</a>
-      <a routerLink="/documentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Documentation</a>
+    <button type="button" class="nav-toggle" aria-label="Menu" [attr.aria-expanded]="isMenuOpen" (click)="toggleMenu()">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" [class.is-open]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Accueil</a>
+      <a routerLink="/galerie" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Galerie</a>
+      <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Contact</a>
+      <a routerLink="/documentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Documentation</a>
       <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener" class="btn-access">
         Accéder à LOGIRAD
       </a>

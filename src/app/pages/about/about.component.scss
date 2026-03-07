@@ -5,6 +5,9 @@
     rgba(0, 51, 102, 0.06),
     rgba(0, 51, 102, 0.01)
   );
+  @media (max-width: 480px) {
+    padding: 2.5rem 0 1.5rem;
+  }
 }
 
 .page-hero-text {
