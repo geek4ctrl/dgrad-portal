@@ -19,17 +19,69 @@
     <h2 class="contact-heading">Contact Us</h2>
 
     <div class="contact-card">
-      <div class="contact-form-col">
+      <div class="contact-form-col" [formGroup]="contactForm">
         <div class="field-group">
-          <input type="text" placeholder="Your Name*" [(ngModel)]="form.name" />
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Your Name*"
+            [class.field-invalid]="(contactForm.get('name')?.touched || submitted) && contactForm.get('name')?.invalid"
+          />
+          @if ((contactForm.get('name')?.touched || submitted) && contactForm.get('name')?.invalid && contactForm.get('name')?.errors) {
+            <p class="field-error">
+              @if (contactForm.get('name')?.errors?.['required']) {
+                Name is required.
+              }
+              @if (contactForm.get('name')?.errors?.['minlength']) {
+                Name must be at least 2 characters.
+              }
+            </p>
+          }
         </div>
         <div class="field-group">
-          <input type="email" placeholder="Your Email*" [(ngModel)]="form.email" />
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Your Email*"
+            [class.field-invalid]="(contactForm.get('email')?.touched || submitted) && contactForm.get('email')?.invalid"
+          />
+          @if ((contactForm.get('email')?.touched || submitted) && contactForm.get('email')?.invalid && contactForm.get('email')?.errors) {
+            <p class="field-error">
+              @if (contactForm.get('email')?.errors?.['required']) {
+                Email is required.
+              }
+              @if (contactForm.get('email')?.errors?.['email']) {
+                Please enter a valid email address.
+              }
+            </p>
+          }
         </div>
         <div class="field-group">
-          <textarea rows="5" placeholder="Your Message" [(ngModel)]="form.message"></textarea>
+          <textarea
+            rows="5"
+            formControlName="message"
+            placeholder="Your Message"
+            [class.field-invalid]="(contactForm.get('message')?.touched || submitted) && contactForm.get('message')?.invalid"
+          ></textarea>
+          @if ((contactForm.get('message')?.touched || submitted) && contactForm.get('message')?.invalid && contactForm.get('message')?.errors) {
+            <p class="field-error">
+              @if (contactForm.get('message')?.errors?.['required']) {
+                Message is required.
+              }
+              @if (contactForm.get('message')?.errors?.['minlength']) {
+                Message must be at least 10 characters.
+              }
+            </p>
+          }
         </div>
-        <button class="btn-send" (click)="sendMessage()">Send A Message</button>
+        <button
+          type="button"
+          class="btn-send"
+          (click)="sendMessage()"
+          [disabled]="contactForm.invalid"
+        >
+          Send A Message
+        </button>
       </div>
 
       <div class="contact-info-col">

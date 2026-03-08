@@ -183,12 +183,26 @@
   background: var(--white);
   transition: border-color .15s, box-shadow .15s;
   resize: vertical;
+  width: 100%;
   &::placeholder { color: #9ca3af; }
   &:focus {
     outline: none;
     border-color: var(--navy);
     box-shadow: 0 0 0 3px rgba(13,27,46,.07);
   }
+  &.field-invalid {
+    border-color: #dc2626;
+    &:focus {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+    }
+  }
+}
+.field-error {
+  margin: .35rem 0 0;
+  font-size: .8rem;
+  color: #dc2626;
+  line-height: 1.4;
 }
 .btn-send {
   align-self: flex-start;
@@ -201,8 +215,13 @@
   font: 600 .9rem var(--ff-body);
   cursor: pointer;
   transition: background .2s, transform .15s;
-  &:hover { background: var(--navy-light); transform: translateY(-1px); }
-  &:active { transform: translateY(0); }
+  &:hover:not(:disabled) { background: var(--navy-light); transform: translateY(-1px); }
+  &:active:not(:disabled) { transform: translateY(0); }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background: var(--navy);
+  }
 }
 
 /* Info column */
