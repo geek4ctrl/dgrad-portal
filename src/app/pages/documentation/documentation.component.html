@@ -1,338 +1,284 @@
-<!-- ── Hero ───────────────────────────────────────────── -->
-<section class="page-hero page-hero--contact-style">
-  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
-  <div class="hero-overlay"></div>
-  <div class="container hero-inner">
-    <div class="hero-left-block">
-      <h1>DOCUMENTATION</h1>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-right-block">
-      <p>Official resources and documents of LOGIRAD.<br/>User manuals, regulatory texts and support.</p>
+<!-- ── Page Hero ───────────────────────────────────────── -->
+<section class="doc-hero">
+  <div class="doc-hero-bg"></div>
+  <div class="container">
+    <div class="doc-hero-inner">
+      <div class="doc-breadcrumb">
+        <a routerLink="/">Accueil</a>
+        <span class="bc-sep">›</span>
+        <span>Documentation</span>
+      </div>
+      <div class="doc-hero-pill">
+        <span class="pill-dot"></span>
+        Manuel utilisateur LOGIRAD v2.0 — Mars 2024
+      </div>
+      <h1 class="doc-hero-title">
+        Documentation<br>
+        <em>LOGIRAD</em>
+      </h1>
+      <p class="doc-hero-sub">
+        Guide complet de la plateforme de gestion des recettes non fiscales de la DGRAD —
+        accès au portail, enregistrement, processus métier et modules fonctionnels.
+      </p>
+      <div class="doc-hero-actions">
+        <a href="assets/docs/Manuel_LOGIRAD_v2.pdf" download class="btn-doc-primary">
+          ⬇ Télécharger le manuel PDF
+        </a>
+        <button class="btn-doc-outline" (click)="scrollTo('portal-access')">
+          🔑 Accès au portail →
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── General information / Integrated LOGIRAD Services ─ -->
-<section class="docs-section">
+<!-- ── Quick Nav tabs ─────────────────────────────────── -->
+<div class="doc-tabs-wrap" [class.sticky]="tabsSticky">
+  <div class="container">
+    <nav class="doc-tabs">
+      @for (tab of tabs; track tab.id) {
+        <button
+          class="doc-tab"
+          [class.active]="activeTab === tab.id"
+          (click)="setTab(tab.id)"
+        >
+          <span class="tab-icon">{{ tab.icon }}</span>
+          {{ tab.label }}
+        </button>
+      }
+    </nav>
+  </div>
+</div>
+
+<!-- ── Portal Access & How to Connect ────────────────── -->
+<section class="section doc-section" id="portal-access" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">General information</div>
-      <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
+      <div class="section-kicker">Accès à la plateforme</div>
+      <h2 class="section-title">Comment accéder au portail LOGIRAD</h2>
       <p class="section-sub">
-        LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
-        taxation, authorizations, control, recovery and litigation.
+        Le portail LOGIRAD est accessible via tout navigateur web moderne. Suivez ces étapes pour
+        vous connecter et commencer à utiliser la plateforme.
       </p>
     </div>
 
-    <div class="svc-grid">
-
-      <!-- 1. Subjects -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 0" (click)="activeCard = 0">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Person icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-            </svg>
+    <!-- Video / Screenshot placeholder -->
+    <div class="portal-demo-wrap">
+      <div class="portal-demo-card">
+        <div class="portal-demo-screen">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-url">
+              <span class="url-lock">🔒</span>
+              <span>logirad.dgrad.gouv.cd</span>
+            </div>
           </div>
-          <h4>Subjects</h4>
-        </div>
-        <ul>
-          <li>Registry of natural persons, legal entities and NGOs</li>
-          <li>Addresses and identifiers for declarations</li>
-          <li>Activation and deactivation of subjects</li>
-          <li>Tax identification number (NIF)</li>
-        </ul>
-      </div>
-
-      <!-- 2. Declarations -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 1" (click)="activeCard = 1">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Document icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
-              <path d="M8 13h8v1.5H8zm0 3h8v1.5H8zm0-6h3v1.5H8z"/>
-            </svg>
+          <div class="portal-login-mock">
+            <div class="login-logo">
+              <div class="login-logo-badge">L</div>
+              <span>LOGIRAD</span>
+            </div>
+            <div class="login-form-mock">
+              <div class="mock-field">
+                <div class="mock-label">Identifiant / NIF</div>
+                <div class="mock-input"></div>
+              </div>
+              <div class="mock-field">
+                <div class="mock-label">Mot de passe</div>
+                <div class="mock-input"></div>
+              </div>
+              <div class="mock-btn">Se connecter</div>
+            </div>
           </div>
-          <h4>Declarations</h4>
         </div>
-        <ul>
-          <li>Links subjects to periodic taxes</li>
-          <li>Records assessments (simple or multiple)</li>
-          <li>Identifies defaulters and potential defaulters</li>
-          <li>Budget articles and periodicity</li>
-        </ul>
+        <div class="portal-demo-caption">
+          <span class="caption-badge">Interface de connexion</span>
+          Portail LOGIRAD — accessible via navigateur Chrome, Firefox ou Edge
+        </div>
       </div>
 
-      <!-- 3. Files -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 2" (click)="activeCard = 2">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Folder icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
-            </svg>
+      <!-- Steps alongside the mockup -->
+      <div class="portal-steps">
+        <h3 class="portal-steps-title">Étapes de connexion</h3>
+        @for (step of accessSteps; track step.step; let last = $last) {
+          <div class="portal-step">
+            <div class="portal-step-num">{{ step.step }}</div>
+            <div class="portal-step-body">
+              <div class="portal-step-title">{{ step.title }}</div>
+              <p class="portal-step-desc">{{ step.desc }}</p>
+            </div>
           </div>
-          <h4>Files</h4>
-        </div>
-        <ul>
-          <li>Tracks requests and supporting documents</li>
-          <li>Reception and acknowledgement of receipt</li>
-          <li>Multi-attachment support per file</li>
-          <li>Initiate taxation directly from a file</li>
-        </ul>
-      </div>
-
-      <!-- 4. Taxation -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 3" (click)="activeCard = 3">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Balance / tax icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 8C8 10 5.9 16.17 3.82 21H5.71c.38-.95.8-1.91 1.29-2.85C9 17 11.52 15.91 17 15.8V20l5-5-5-5v3z"/>
-            </svg>
-          </div>
-          <h4>Taxation</h4>
-        </div>
-        <ul>
-          <li>Standard, ex-officio and regularisation notes</li>
-          <li>Taxation based on assessments</li>
-          <li>Attachments and document validation</li>
-          <li>Chef-Taxateur validation workflow</li>
-        </ul>
-      </div>
-
-      <!-- 5. Authorizations -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 4" (click)="activeCard = 4">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Shield / authorize icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-            </svg>
-          </div>
-          <h4>Authorizations</h4>
-        </div>
-        <ul>
-          <li>Payment notices and pay orders</li>
-          <li>Special and ex-officio authorisations</li>
-          <li>Rejected and cancelled notice registers</li>
-          <li>Conformity review by ordering officer</li>
-        </ul>
-      </div>
-
-      <!-- 6. Control -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 5" (click)="activeCard = 5">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Search / control icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            </svg>
-          </div>
-          <h4>Control</h4>
-        </div>
-        <ul>
-          <li>Compliance of authorisations and taxations</li>
-          <li>Targeted control missions</li>
-          <li>Access to taxation and payment registers</li>
-          <li>Controller conformity reports</li>
-        </ul>
-      </div>
-
-      <!-- 7. Recovery -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 6" (click)="activeCard = 6">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Wallet / recovery icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 18v1c0 1.1-.9 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14c1.1 0 2 .9 2 2v1h-9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-            </svg>
-          </div>
-          <h4>Recovery</h4>
-        </div>
-        <ul>
-          <li>Uptake of authorised revenues</li>
-          <li>Clearance and discharge certificates</li>
-          <li>Rolls, final notices and enforcement</li>
-          <li>Outstanding balance monitoring</li>
-        </ul>
-      </div>
-
-      <!-- 8. Litigation -->
-      <div class="svc-card" [class.svc-card--active]="activeCard === 7" (click)="activeCard = 7">
-        <div class="svc-card-header">
-          <div class="svc-icon">
-            <!-- Gavel / litigation icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 21h12v2H1zm5.5-4h1c.28 0 .5-.22.5-.5v-7c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5zm4 0h1c.28 0 .5-.22.5-.5v-7c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5zM6.5 7H8L6 3H4L6.5 7zM9.5 7H11L9 3H7l2.5 4zM22 9l-9-4-2 4.5 9 4L22 9zm-7.69 5.94L12 11.73l1.64-3.68 2.31 1.03-1.64 3.68 1.96.87-.96 2.31z"/>
-            </svg>
-          </div>
-          <h4>Litigation</h4>
-        </div>
-        <ul>
-          <li>Administrative and judicial appeals</li>
-          <li>Effects of complaints on taxations</li>
-          <li>Decisions on notices and amounts due</li>
-          <li>Dispute tracking and resolution</li>
-        </ul>
-      </div>
-
-    </div><!-- /svc-grid -->
-  </div>
-</section>
-
-<!-- ── User Profiles ───────────────────────────────────── -->
-<section class="docs-section docs-section--alt">
-  <div class="container container--narrow">
-    <div class="section-header-center">
-      <div class="section-kicker">User profiles</div>
-      <h2 class="section-title">User Profiles in LOGIRAD</h2>
-      <p class="section-sub">
-        Access is strictly controlled through predefined user profiles, each with specific responsibilities and permissions.
-      </p>
-    </div>
-    <div class="profile-grid">
-      @for (p of profiles; track p.name) {
-        <div class="profile-card">
-          <h4>{{ p.name }}</h4>
-          <p>{{ p.description }}</p>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ── Security & Access ──────────────────────────────── -->
-<section class="docs-section">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="info-card-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-        </svg>
-      </div>
-      <div class="info-card-body">
-        <div class="section-kicker">Security &amp; access</div>
-        <h2 class="info-card-title">Security, warnings and precautions</h2>
-        <p class="info-card-sub">
-          The manuals insist on a secure and responsible use of LOGIRAD by all authorized users.
-        </p>
-        <ul class="bullet-list">
-          @for (item of securityPoints; track item) {
-            <li>{{ item }}</li>
+          @if (!last) {
+            <div class="portal-step-connector"></div>
           }
-        </ul>
-        <div class="resource-links-in-card">
-          <p class="resource-links-item">
-            LOGIRAD web application:
-            <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener">https://logirad.dgrad.cd</a>
-          </p>
-          <p class="resource-links-item">
-            Latest manuals and resources:
-            <a href="http://portail.dgrad.cd" target="_blank" rel="noopener">portail.dgrad.cd</a>
-          </p>
-          <p class="resource-links-item">
-            Technical support:
-            <a href="mailto:support.logirad&#64;dgrad.cd">support.logirad&#64;dgrad.cd</a>
-          </p>
-        </div>
+        }
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Key Business Processes ────────────────────────── -->
-<section class="docs-section docs-section--alt">
-  <div class="container container--narrow">
-    <div class="section-header-center">
-      <div class="section-kicker">Processes</div>
-      <h2 class="section-title">Key Business Processes</h2>
-      <p class="section-sub">
-        LOGIRAD structures the revenue chain into a series of linked processes, from subject registration to dispute resolution.
-      </p>
-    </div>
-    <div class="process-list">
-      @for (proc of processes; track proc.title; let i = $index) {
-        <div class="process-item">
-          <div class="process-num">{{ i + 1 }}</div>
-          <div class="process-content">
-            <h4>{{ proc.title }}</h4>
-            <p>{{ proc.summary }}</p>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- ── Documentation Center ──────────────────────────── -->
-<section class="docs-section docs-center">
+<!-- ── How to Register on the Portal ─────────────────── -->
+<section class="section doc-section register-section" id="register" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">Resources</div>
-      <h2 class="section-title">Documentation Center</h2>
-      <p class="section-sub">Official resources and documents of LOGIRAD.</p>
+      <div class="section-kicker">Enregistrement</div>
+      <h2 class="section-title">Comment s'enregistrer sur LOGIRAD</h2>
+      <p class="section-sub">
+        L'enregistrement d'un assujetti (personne physique, morale ou ONG) suit un processus
+        structuré en plusieurs étapes dans le module Sujets.
+      </p>
     </div>
 
-    @if (docCategories.length > 0) {
-      <div class="doc-viewer">
-        <!-- Left: categories -->
-        <div class="doc-viewer-left">
-          <h3 class="doc-panel-heading">CATEGORIES</h3>
-          @for (cat of docCategories; track cat.id; let i = $index) {
-            <div
-              class="doc-category-row"
-              [class.is-selected]="selectedCategoryIndex === i"
-              (click)="selectCategory(i)"
-            >
-              <span class="doc-category-name">{{ cat.name }}</span>
-              <span class="doc-category-count">{{ cat.count }}</span>
+    <div class="register-flow">
+      @for (step of registrationSteps; track step.step; let last = $last) {
+        <div class="reg-step-wrap">
+          <div class="reg-step-card">
+            <div class="reg-step-header">
+              <div class="reg-step-num">{{ step.step }}</div>
+              <span class="reg-step-icon">{{ step.icon }}</span>
+            </div>
+            <h4 class="reg-step-title">{{ step.title }}</h4>
+            <p class="reg-step-desc">{{ step.desc }}</p>
+            @if (step.fields && step.fields.length > 0) {
+              <div class="reg-step-fields">
+                @for (field of step.fields; track field) {
+                  <span class="reg-field-chip">{{ field }}</span>
+                }
+              </div>
+            }
+          </div>
+          @if (!last) {
+            <div class="reg-step-arrow">
+              <svg viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="0" x2="12" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+                <path d="M5 26 L12 36 L19 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
             </div>
           }
         </div>
+      }
+    </div>
+  </div>
+</section>
 
-        <!-- Right: documents -->
-        <div class="doc-viewer-right">
-          @if (activeCategory; as cat) {
-            @if (cat.documents.length > 0) {
-              <h3 class="doc-right-heading">
-                <span class="doc-right-bullet">•</span> {{ cat.name }}
-              </h3>
-              <div class="doc-entries">
-                @for (doc of cat.documents; track doc.title; let i = $index) {
-                  <div class="doc-item" [class.is-selected]="selectedDocIndex === i">
-                    <div class="doc-item-header" (click)="selectDocument(i)">
-                      <span class="doc-entry-title">{{ doc.title }}</span>
-                      @if (doc.publishedYear) {
-                        <span class="doc-entry-meta">Published in {{ doc.publishedYear }}</span>
-                      }
+<!-- ── Key Business Processes ─ with downward arrows ─── -->
+<section class="section doc-section processes-section" id="processes" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Processus métier</div>
+      <h2 class="section-title">Key Business Processes</h2>
+      <p class="section-sub">
+        La chaîne LOGIRAD suit un flux séquentiel de bout en bout, de l'identification de l'assujetti
+        jusqu'à la clearance en trésorerie. Chaque étape s'enchaîne à la suivante.
+      </p>
+    </div>
+
+    <div class="process-chain">
+      @for (proc of businessProcesses; track proc.step; let last = $last) {
+        <div class="process-item">
+          <div class="process-card" [class]="'process-card--' + proc.color">
+            <div class="process-card-top">
+              <div class="process-num">{{ proc.step }}</div>
+              <span class="process-icon">{{ proc.icon }}</span>
+            </div>
+            <h4 class="process-title">{{ proc.title }}</h4>
+            <p class="process-desc">{{ proc.desc }}</p>
+            <ul class="process-list">
+              @for (item of proc.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+          <!-- Downward arrow between cards (not after last) -->
+          @if (!last) {
+            <div class="process-arrow" aria-hidden="true">
+              <div class="process-arrow-track">
+                <svg class="process-arrow-svg" viewBox="0 0 24 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Vertical stem -->
+                  <line x1="12" y1="0" x2="12" y2="36" stroke="#c9a84c" stroke-width="2.5" stroke-dasharray="6 4"/>
+                  <!-- Arrowhead filled -->
+                  <path d="M3 33 L12 52 L21 33 Z" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="process-arrow-label">↓ Étape suivante</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── User Profiles in LOGIRAD ── REMOVED per requirements ──
+     (Security & Access / User Profiles section has been removed)
+-->
+
+<!-- ── Functional Modules Detail ─────────────────────── -->
+<section class="section doc-section modules-section" id="modules" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Modules fonctionnels</div>
+      <h2 class="section-title">Modules détaillés de LOGIRAD</h2>
+      <p class="section-sub">
+        Chaque module correspond à un maillon de la chaîne de gestion des recettes non fiscales.
+      </p>
+    </div>
+
+    <div class="modules-accordion">
+      @for (mod of functionalModules; track mod.id; let i = $index) {
+        <div class="mod-panel" [class.is-open]="openModule === mod.id">
+          <button class="mod-header" (click)="toggleModule(mod.id)" type="button">
+            <div class="mod-header-left">
+              <span class="mod-icon">{{ mod.icon }}</span>
+              <span class="mod-title">{{ mod.title }}</span>
+            </div>
+            <span class="mod-chevron">{{ openModule === mod.id ? '▲' : '▼' }}</span>
+          </button>
+          @if (openModule === mod.id) {
+            <div class="mod-body">
+              <p class="mod-overview">{{ mod.overview }}</p>
+              <div class="mod-features">
+                @for (feat of mod.features; track feat.label) {
+                  <div class="mod-feature">
+                    <div class="mod-feature-icon">{{ feat.icon }}</div>
+                    <div>
+                      <div class="mod-feature-label">{{ feat.label }}</div>
+                      <p class="mod-feature-desc">{{ feat.desc }}</p>
                     </div>
-                    @if (selectedDocIndex === i) {
-                      <div class="doc-item-preview">
-                        @if (isPdfDocument(doc)) {
-                          <div class="doc-preview-embed">
-                            <iframe [src]="getPdfSafeUrl(doc)" [title]="'Preview of ' + doc.title" class="doc-preview-iframe"></iframe>
-                          </div>
-                        }
-                        @if (doc.href) {
-                          <a [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download" download>
-                            DOWNLOAD <span class="doc-download-arrow">↓</span>
-                          </a>
-                        }
-                      </div>
-                    }
                   </div>
                 }
               </div>
-            } @else {
-              <div class="doc-empty"><p>No documents in this category.</p></div>
-            }
+            </div>
           }
         </div>
-      </div>
-    }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Downloads ─────────────────────────────────────── -->
+<section class="section doc-section downloads-section" id="downloads" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Ressources</div>
+      <h2 class="section-title">Téléchargements & ressources</h2>
+    </div>
+    <div class="downloads-grid">
+      @for (doc of downloadItems; track doc.title) {
+        <div class="download-card">
+          <div class="download-icon-wrap">{{ doc.icon }}</div>
+          <div class="download-body">
+            <div class="download-tag">{{ doc.tag }}</div>
+            <h4>{{ doc.title }}</h4>
+            <p>{{ doc.desc }}</p>
+          </div>
+          <a [href]="doc.href" download class="download-btn">
+            ⬇ Télécharger
+          </a>
+        </div>
+      }
+    </div>
   </div>
 </section>
