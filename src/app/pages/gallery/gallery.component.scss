@@ -147,11 +147,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-md);
   overflow: hidden;
-  transition: all 0.22s;
+  transition: transform 0.3s ease, background 0.22s, box-shadow 0.22s;
 }
 .gallery-section--newsletter-style .gallery-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 .gallery-section--newsletter-style .gallery-image {
   height: 160px;

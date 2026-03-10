@@ -1,13 +1,10 @@
-
-
 <!-- ── Hero ─────────────────────────────────────────── -->
 <section class="hero">
-  <!-- FIX: inline style binding so Angular resolves the asset path correctly at runtime -->
-  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
+  <div class="hero-bg" style="background-image: url('assets/images/Home.jpg');"></div>
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-inner">
-      <div class="hero-left">
+      <div class="hero-left" [class.hero-left-animate]="slideChanging">
         <div class="hero-pill">
           <span class="hero-pill-dot"></span>
           {{ activeSlide.date }}
@@ -20,10 +17,12 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-image-wrap">
+        <div class="hero-image-wrap" [class.hero-image-animate]="slideChanging">
           <img
+            class="hero-main-img"
             [src]="activeSlide.image"
             [alt]="activeSlide.title | stripHtml"
+            loading="eager"
           />
           <div class="hero-indicators">
             <div class="hero-indicator-dots">
@@ -48,7 +47,7 @@
 </section>
 
 <!-- ── Stats ─────────────────────────────────────────── -->
-<div class="stats-bar-wrap">
+<div class="stats-bar-wrap" appScrollIn>
   <div class="container">
     <div class="stats-bar">
       @for (stat of stats; track stat.label) {
@@ -62,17 +61,37 @@
   </div>
 </div>
 
+<!-- ── Portal Access Banner ──────────────────────────── -->
+<div class="portal-banner" appScrollIn>
+  <div class="container">
+    <div class="portal-banner-inner">
+      <div class="portal-banner-left">
+        <div class="portal-banner-icon">🔐</div>
+        <div>
+          <p class="portal-banner-label">Accès à la plateforme LOGIRAD</p>
+          <p class="portal-banner-url">https://logirad.dgrad.cd</p>
+        </div>
+      </div>
+      <div class="portal-banner-right">
+        <p class="portal-banner-hint">Navigateurs compatibles : Chrome, Firefox, Edge, Safari</p>
+        <a href="https://logirad.dgrad.cd" target="_blank" class="portal-banner-btn">
+          Se connecter →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── What We Offer ─────────────────────────────────── -->
-<section class="section offer" id="services">
+<section class="section offer" id="services" appScrollIn>
   <div class="container">
     <div class="section-header-center">
       <div class="section-kicker">Ce que nous offrons</div>
       <h2 class="section-title">UNE CHAÎNE NUMÉRISÉE DE BOUT EN BOUT</h2>
       <p class="section-sub">
         LOGIRAD est le logiciel intégré de gestion des recettes non fiscales administré par la DGRAD.
-        Il couvre l’assiette, la liquidation, l’ordonnancement, le recouvrement, le contrôle, les exonérations
-        et la gestion du contentieux, ainsi que la production de tableaux de bord. Son objectif est de
-        digitaliser l’ensemble de la procédure de collecte des droits, taxes et redevances du Gouvernement central.
+        Il couvre l'assiette, la liquidation, l'ordonnancement, le recouvrement, le contrôle, les exonérations
+        et la gestion du contentieux, ainsi que la production de tableaux de bord.
       </p>
     </div>
     <div class="offer-grid">
@@ -89,15 +108,46 @@
   </div>
 </section>
 
-<!-- ── Integrated Services / Functional modules ────── -->
-<section class="section services-section" id="documentation">
+<!-- ── User Profiles ─────────────────────────────────── -->
+<section class="section profiles-section" id="profils" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">Functional modules</div>
-      <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
+      <div class="section-kicker">Gestion des accès</div>
+      <h2 class="section-title">PROFILS UTILISATEURS LOGIRAD</h2>
       <p class="section-sub">
-        LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
-        taxation, authorizations, control, recovery and litigation.
+        Chaque utilisateur dispose d'un profil défini par l'administrateur système, avec des droits
+        d'accès correspondant à son rôle dans la chaîne des recettes.
+      </p>
+    </div>
+    <div class="profiles-grid">
+      @for (profile of userProfiles; track profile.name) {
+        <div class="profile-card">
+          <div class="profile-icon-wrap">{{ profile.icon }}</div>
+          <div class="profile-content">
+            <h4>{{ profile.name }}</h4>
+            <p>{{ profile.description }}</p>
+          </div>
+          <div class="profile-badge">{{ profile.badge }}</div>
+        </div>
+      }
+    </div>
+    <div class="profiles-note">
+      <span class="note-icon">ℹ️</span>
+      <p>Les identifiants (adresse e-mail et mot de passe) sont fournis par l'administrateur LOGIRAD à la DGRAD.
+        Chaque utilisateur est tenu de garder ses identifiants confidentiels et de ne jamais les partager.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Integrated Services / Functional modules ────── -->
+<section class="section services-section" id="modules" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Modules fonctionnels</div>
+      <h2 class="section-title">SERVICES INTÉGRÉS LOGIRAD</h2>
+      <p class="section-sub">
+        LOGIRAD centralise les principaux modules décrits dans le manuel utilisateur : assujettis, déclarations,
+        taxation, ordonnancement, contrôle, recouvrement et contentieux.
       </p>
     </div>
     <div class="services-grid">
@@ -116,15 +166,218 @@
   </div>
 </section>
 
-<!-- ── National deployment / Extension of the LOGIRAD paperless procedure ─── -->
-<section class="section extension">
+<!-- ── Controleurs & Receveurs ───────────────────────── -->
+<section class="section roles-section" id="roles" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">National deployment</div>
-      <h2 class="section-title">Extension of the LOGIRAD paperless procedure</h2>
+      <div class="section-kicker">Rôles spécialisés</div>
+      <h2 class="section-title">CONTRÔLEURS & RECEVEURS</h2>
       <p class="section-sub">
-        In accordance with government guidelines, the use of the platform becomes the mandatory
-        standard to optimize the mobilization of non-tax revenues.
+        Ces deux profils clés assurent la bonne exécution de la chaîne de recouvrement des recettes
+        non fiscales au sein de la DGRAD.
+      </p>
+    </div>
+    <div class="roles-grid">
+
+      <!-- Controleurs column -->
+      <div class="role-panel role-panel--blue">
+        <div class="role-panel-header">
+          <div class="role-panel-icon">🔍</div>
+          <div>
+            <h3>Contrôleurs</h3>
+            <p>Validation des ordonnancements</p>
+          </div>
+        </div>
+        <div class="role-tasks">
+          @for (task of controleurTasks; track task.label) {
+            <div class="role-task">
+              <div class="role-task-icon">{{ task.icon }}</div>
+              <div>
+                <strong>{{ task.label }}</strong>
+                <span>{{ task.desc }}</span>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="role-panel-footer">
+          <span class="role-menu-label">Menu principal :</span>
+          <div class="role-chips">
+            <span class="role-chip">Ordonnancements à contrôler</span>
+            <span class="role-chip">Ordonnancements contrôlés</span>
+            <span class="role-chip">Ordonnancements à problème</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receveurs column -->
+      <div class="role-panel role-panel--gold">
+        <div class="role-panel-header">
+          <div class="role-panel-icon">💳</div>
+          <div>
+            <h3>Receveurs</h3>
+            <p>Recouvrement & poursuites</p>
+          </div>
+        </div>
+        <div class="role-tasks">
+          @for (task of receveurTasks; track task.label) {
+            <div class="role-task">
+              <div class="role-task-icon">{{ task.icon }}</div>
+              <div>
+                <strong>{{ task.label }}</strong>
+                <span>{{ task.desc }}</span>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="role-panel-footer">
+          <span class="role-menu-label">Modules accessibles :</span>
+          <div class="role-chips">
+            <span class="role-chip">Paiement</span>
+            <span class="role-chip">Apurement</span>
+            <span class="role-chip">Acquit libératoire</span>
+            <span class="role-chip">Rôle</span>
+            <span class="role-chip">Poursuites</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recouvrement timeline -->
+    <div class="recovery-flow" appScrollIn>
+      <div class="recovery-flow-title">
+        <span>📋</span> Processus de recouvrement par voie de rôle
+      </div>
+      <div class="recovery-steps">
+        @for (step of recoverySteps; track step.label; let last = $last) {
+          <div class="recovery-step">
+            <div class="recovery-step-inner">
+              <div class="recovery-step-num">{{ step.num }}</div>
+              <p class="recovery-step-label">{{ step.label }}</p>
+              <span class="recovery-step-delay">{{ step.delay }}</span>
+            </div>
+            @if (!last) {
+              <div class="recovery-step-arrow">→</div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Security & Connection ─────────────────────────── -->
+<section class="section security-section" id="securite" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Accès sécurisé</div>
+      <h2 class="section-title">CONNEXION & SÉCURITÉ</h2>
+      <p class="section-sub">
+        L'accès à LOGIRAD est limité aux agents autorisés. Chaque utilisateur est responsable de la
+        confidentialité de ses identifiants.
+      </p>
+    </div>
+    <div class="security-grid">
+
+      <!-- Login mock card -->
+      <div class="security-login-card">
+        <div class="login-mock">
+          <div class="login-mock-bar">
+            <div class="login-mock-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="login-mock-url">🔒 logirad.dgrad.cd</div>
+          </div>
+          <div class="login-mock-body">
+            <div class="login-mock-logo">dgrad<strong>.gouv.cd</strong></div>
+            <p class="login-mock-welcome">Bienvenue au portail LOGIRAD</p>
+            <div class="login-mock-field">
+              <span>👤</span>
+              <span>nom&#64;logirad.cd</span>
+            </div>
+            <div class="login-mock-field">
+              <span>🔑</span>
+              <span>••••••••</span>
+            </div>
+            <div class="login-mock-btn">→ SE CONNECTER</div>
+            <p class="login-mock-forgot">Mot de passe oublié ?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security rules -->
+      <div class="security-rules">
+        @for (rule of securityRules; track rule.title) {
+          <div class="security-rule-card">
+            <div class="security-rule-icon">{{ rule.icon }}</div>
+            <div>
+              <strong>{{ rule.title }}</strong>
+              <p>{{ rule.desc }}</p>
+            </div>
+          </div>
+        }
+        <div class="security-change-pw">
+          <div class="security-change-icon">🔄</div>
+          <div>
+            <strong>Modifier son mot de passe</strong>
+            <p>Cliquez sur votre nom en haut à gauche → <em>[Modifier votre mot de passe]</em> → saisissez l'ancien, puis le nouveau deux fois, puis validez.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ISYS-Régies interoperability ───────────────────── -->
+<section class="section isys-section" appScrollIn>
+  <div class="container">
+    <div class="isys-card">
+      <div class="isys-left">
+        <div class="isys-kicker">Interopérabilité</div>
+        <h2>ISYS‑Régies & LOGIRAD</h2>
+        <p>
+          Opérationnel sur toute l'étendue de la RDC depuis janvier 2022, ISYS‑Régies automatise
+          la procédure de perception des recettes dès l'encaissement par les banques jusqu'au
+          reversement à la Banque Centrale du Congo et à la comptabilisation dans le compte général du Trésor.
+        </p>
+        <p>
+          Son intégration avec LOGIRAD assure la dématérialisation complète de la procédure d'apurement
+          et apporte transparence et fiabilité sur les recettes et la trésorerie de l'État.
+        </p>
+        <div class="isys-badges">
+          <span>✔ Encaissement automatisé</span>
+          <span>✔ Reversement BCC</span>
+          <span>✔ Apurement dématérialisé</span>
+          <span>✔ +6 000 utilisateurs formés</span>
+        </div>
+      </div>
+      <div class="isys-right">
+        <div class="isys-flow">
+          @for (step of isysFlow; track step.label; let last = $last) {
+            <div class="isys-step">
+              <div class="isys-step-icon">{{ step.icon }}</div>
+              <div class="isys-step-label">{{ step.label }}</div>
+            </div>
+            @if (!last) {
+              <div class="isys-arrow">↓</div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── National deployment ─── -->
+<section class="section extension" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Déploiement national</div>
+      <h2 class="section-title">Extension de la procédure dématérialisée LOGIRAD</h2>
+      <p class="section-sub">
+        Conformément aux directives gouvernementales, l'utilisation de la plateforme devient
+        la norme obligatoire pour optimiser la mobilisation des recettes non fiscales.
       </p>
     </div>
     <div class="ext-grid">
@@ -161,28 +414,28 @@
                 <span class="pill-dot"></span>
                 <div>
                   <p class="pill-title">Procédure dématérialisée</p>
-                  <p class="pill-sub">Notes d’imposition, avis de paiement et recouvrement gérés en ligne.</p>
+                  <p class="pill-sub">Notes d'imposition, avis de paiement et recouvrement gérés en ligne.</p>
                 </div>
               </div>
               <div class="ext-map-pill">
                 <span class="pill-dot"></span>
                 <div>
                   <p class="pill-title">Couverture nationale progressive</p>
-                  <p class="pill-sub">Déploiement par vagues dans l’ensemble des 26 provinces.</p>
+                  <p class="pill-sub">Déploiement par vagues dans l'ensemble des 26 provinces.</p>
                 </div>
               </div>
               <div class="ext-map-pill">
                 <span class="pill-dot"></span>
                 <div>
                   <p class="pill-title">Interopérabilité avec ISYS‑Régies</p>
-                  <p class="pill-sub">Chaîne informatisée des recettes, de l’encaissement à la trésorerie.</p>
+                  <p class="pill-sub">Chaîne informatisée des recettes, de l'encaissement à la trésorerie.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <p class="ext-note">
-          <strong>Continual education :</strong> Plus de 516 agents formés en 2024,
+          <strong>Formation continue :</strong> Plus de 516 agents formés en 2024,
           incluant 157 pour le Kasaï Oriental/Lomami/Sankuru à Mbuji-Mayi.
         </p>
       </div>
@@ -190,7 +443,7 @@
         <div class="ext-info-card">
           <div class="ext-info-grid">
             <div class="ext-info-col">
-              <div class="ext-services-label"><span></span> Assessment services</div>
+              <div class="ext-services-label"><span></span> Services d'assiette</div>
               <div class="ext-chips">
                 @for (chip of assietteServices; track chip) {
                   <span class="ext-chip">{{ chip }}</span>
@@ -198,7 +451,7 @@
               </div>
             </div>
             <div class="ext-info-col">
-              <div class="ext-services-label"><span></span> Provinces in scope</div>
+              <div class="ext-services-label"><span></span> Provinces couvertes</div>
               <div class="ext-phases">
                 @for (phase of phases; track phase.label) {
                   <div class="ext-phase">
@@ -216,7 +469,7 @@
 </section>
 
 <!-- ── Newsletter ─────────────────────────────────────── -->
-<section class="newsletter section" id="gallery">
+<section class="newsletter section" id="gallery" appScrollIn>
   <div class="container">
     <div class="section-header-center">
       <div class="section-kicker">Actualités</div>
@@ -243,4 +496,3 @@
     </div>
   </div>
 </section>
-

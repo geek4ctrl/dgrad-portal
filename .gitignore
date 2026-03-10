@@ -1,0 +1,9 @@
+.gitignore created by AI
+node_modules/
+dist/
+.tmp/
+.angular/
+**/*.log
+.env
+.env.*
+coverage/

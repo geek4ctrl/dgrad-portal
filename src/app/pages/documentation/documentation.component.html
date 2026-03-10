@@ -1,6 +1,6 @@
-<!-- ── First section: same layout as Contact US ───────── -->
+<!-- ── Hero ───────────────────────────────────────────── -->
 <section class="page-hero page-hero--contact-style">
-  <div class="hero-bg" style="background-image: url('assets/DOCUMENTATION-bb206954-fb72-4632-a1b3-97f01e747348.png');"></div>
+  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
   <div class="hero-overlay"></div>
   <div class="container hero-inner">
     <div class="hero-left-block">
@@ -13,146 +13,326 @@
   </div>
 </section>
 
-<!-- ── General information: in card ─────────────────────── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">General information</div>
-        <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
-        <p class="section-sub">
-          LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
-          taxation, authorizations, control, recovery and litigation.
-        </p>
+<!-- ── General information / Integrated LOGIRAD Services ─ -->
+<section class="docs-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">General information</div>
+      <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
+      <p class="section-sub">
+        LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
+        taxation, authorizations, control, recovery and litigation.
+      </p>
+    </div>
+
+    <div class="svc-grid">
+
+      <!-- 1. Subjects -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 0" (click)="activeCard = 0">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Person icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          </div>
+          <h4>Subjects</h4>
+        </div>
+        <ul>
+          <li>Registry of natural persons, legal entities and NGOs</li>
+          <li>Addresses and identifiers for declarations</li>
+          <li>Activation and deactivation of subjects</li>
+          <li>Tax identification number (NIF)</li>
+        </ul>
       </div>
+
+      <!-- 2. Declarations -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 1" (click)="activeCard = 1">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Document icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
+              <path d="M8 13h8v1.5H8zm0 3h8v1.5H8zm0-6h3v1.5H8z"/>
+            </svg>
+          </div>
+          <h4>Declarations</h4>
+        </div>
+        <ul>
+          <li>Links subjects to periodic taxes</li>
+          <li>Records assessments (simple or multiple)</li>
+          <li>Identifies defaulters and potential defaulters</li>
+          <li>Budget articles and periodicity</li>
+        </ul>
+      </div>
+
+      <!-- 3. Files -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 2" (click)="activeCard = 2">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Folder icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+            </svg>
+          </div>
+          <h4>Files</h4>
+        </div>
+        <ul>
+          <li>Tracks requests and supporting documents</li>
+          <li>Reception and acknowledgement of receipt</li>
+          <li>Multi-attachment support per file</li>
+          <li>Initiate taxation directly from a file</li>
+        </ul>
+      </div>
+
+      <!-- 4. Taxation -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 3" (click)="activeCard = 3">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Balance / tax icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21H5.71c.38-.95.8-1.91 1.29-2.85C9 17 11.52 15.91 17 15.8V20l5-5-5-5v3z"/>
+            </svg>
+          </div>
+          <h4>Taxation</h4>
+        </div>
+        <ul>
+          <li>Standard, ex-officio and regularisation notes</li>
+          <li>Taxation based on assessments</li>
+          <li>Attachments and document validation</li>
+          <li>Chef-Taxateur validation workflow</li>
+        </ul>
+      </div>
+
+      <!-- 5. Authorizations -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 4" (click)="activeCard = 4">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Shield / authorize icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
+          </div>
+          <h4>Authorizations</h4>
+        </div>
+        <ul>
+          <li>Payment notices and pay orders</li>
+          <li>Special and ex-officio authorisations</li>
+          <li>Rejected and cancelled notice registers</li>
+          <li>Conformity review by ordering officer</li>
+        </ul>
+      </div>
+
+      <!-- 6. Control -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 5" (click)="activeCard = 5">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Search / control icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </div>
+          <h4>Control</h4>
+        </div>
+        <ul>
+          <li>Compliance of authorisations and taxations</li>
+          <li>Targeted control missions</li>
+          <li>Access to taxation and payment registers</li>
+          <li>Controller conformity reports</li>
+        </ul>
+      </div>
+
+      <!-- 7. Recovery -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 6" (click)="activeCard = 6">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Wallet / recovery icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 18v1c0 1.1-.9 2-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14c1.1 0 2 .9 2 2v1h-9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+          </div>
+          <h4>Recovery</h4>
+        </div>
+        <ul>
+          <li>Uptake of authorised revenues</li>
+          <li>Clearance and discharge certificates</li>
+          <li>Rolls, final notices and enforcement</li>
+          <li>Outstanding balance monitoring</li>
+        </ul>
+      </div>
+
+      <!-- 8. Litigation -->
+      <div class="svc-card" [class.svc-card--active]="activeCard === 7" (click)="activeCard = 7">
+        <div class="svc-card-header">
+          <div class="svc-icon">
+            <!-- Gavel / litigation icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 21h12v2H1zm5.5-4h1c.28 0 .5-.22.5-.5v-7c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5zm4 0h1c.28 0 .5-.22.5-.5v-7c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5v7c0 .28.22.5.5.5zM6.5 7H8L6 3H4L6.5 7zM9.5 7H11L9 3H7l2.5 4zM22 9l-9-4-2 4.5 9 4L22 9zm-7.69 5.94L12 11.73l1.64-3.68 2.31 1.03-1.64 3.68 1.96.87-.96 2.31z"/>
+            </svg>
+          </div>
+          <h4>Litigation</h4>
+        </div>
+        <ul>
+          <li>Administrative and judicial appeals</li>
+          <li>Effects of complaints on taxations</li>
+          <li>Decisions on notices and amounts due</li>
+          <li>Dispute tracking and resolution</li>
+        </ul>
+      </div>
+
+    </div><!-- /svc-grid -->
+  </div>
+</section>
+
+<!-- ── User Profiles ───────────────────────────────────── -->
+<section class="docs-section docs-section--alt">
+  <div class="container container--narrow">
+    <div class="section-header-center">
+      <div class="section-kicker">User profiles</div>
+      <h2 class="section-title">User Profiles in LOGIRAD</h2>
+      <p class="section-sub">
+        Access is strictly controlled through predefined user profiles, each with specific responsibilities and permissions.
+      </p>
+    </div>
+    <div class="profile-grid">
+      @for (p of profiles; track p.name) {
+        <div class="profile-card">
+          <h4>{{ p.name }}</h4>
+          <p>{{ p.description }}</p>
+        </div>
+      }
     </div>
   </div>
 </section>
 
-<!-- ── User profiles: in card ──────────────────────────── -->
-<section class="docs-extra">
+<!-- ── Security & Access ──────────────────────────────── -->
+<section class="docs-section">
   <div class="container container--narrow">
     <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">User profiles</div>
-        <h2 class="section-title">User profiles in LOGIRAD</h2>
-        <p class="section-sub">
-          Access is strictly controlled through predefined user profiles, each with specific responsibilities and permissions.
-        </p>
+      <div class="info-card-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Security &amp; access: in card (with resource links inside) ── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
+      <div class="info-card-body">
         <div class="section-kicker">Security &amp; access</div>
-        <h2 class="section-title">Security, warnings and precautions</h2>
-        <p class="section-sub">
+        <h2 class="info-card-title">Security, warnings and precautions</h2>
+        <p class="info-card-sub">
           The manuals insist on a secure and responsible use of LOGIRAD by all authorized users.
         </p>
-      </div>
-      <ul class="bullet-list bullet-list--standalone">
-        <li *ngFor="let item of securityPoints">{{ item }}</li>
-      </ul>
-      <div class="resource-links-in-card">
-        <p class="resource-links-item">
-          LOGIRAD web application:
-          <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener">https://logirad.dgrad.cd</a>
-        </p>
-        <p class="resource-links-item">
-          Latest manuals and resources:
-          <a href="http://portail.dgrad.cd" target="_blank" rel="noopener">portail.dgrad.cd</a>
-        </p>
-        <p class="resource-links-item">
-          Technical support:
-          <a href="mailto:support.logirad&#64;dgrad.cd">support.logirad&#64;dgrad.cd</a>
-        </p>
+        <ul class="bullet-list">
+          @for (item of securityPoints; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+        <div class="resource-links-in-card">
+          <p class="resource-links-item">
+            LOGIRAD web application:
+            <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener">https://logirad.dgrad.cd</a>
+          </p>
+          <p class="resource-links-item">
+            Latest manuals and resources:
+            <a href="http://portail.dgrad.cd" target="_blank" rel="noopener">portail.dgrad.cd</a>
+          </p>
+          <p class="resource-links-item">
+            Technical support:
+            <a href="mailto:support.logirad&#64;dgrad.cd">support.logirad&#64;dgrad.cd</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Processes: in card ──────────────────────────────── -->
-<section class="docs-extra">
+<!-- ── Key Business Processes ────────────────────────── -->
+<section class="docs-section docs-section--alt">
   <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">Processes</div>
-        <h2 class="section-title">Key business processes</h2>
-        <p class="section-sub">
-          LOGIRAD structures the revenue chain into a series of linked processes, from subject registration to dispute resolution.
-        </p>
-      </div>
+    <div class="section-header-center">
+      <div class="section-kicker">Processes</div>
+      <h2 class="section-title">Key Business Processes</h2>
+      <p class="section-sub">
+        LOGIRAD structures the revenue chain into a series of linked processes, from subject registration to dispute resolution.
+      </p>
+    </div>
+    <div class="process-list">
+      @for (proc of processes; track proc.title; let i = $index) {
+        <div class="process-item">
+          <div class="process-num">{{ i + 1 }}</div>
+          <div class="process-content">
+            <h4>{{ proc.title }}</h4>
+            <p>{{ proc.summary }}</p>
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>
 
-<!-- ── Resources / Documentation Center (ref: portail.dgrad.cd/documentation) ── -->
-<section class="docs-extra docs-extra--centre">
+<!-- ── Documentation Center ──────────────────────────── -->
+<section class="docs-section docs-center">
   <div class="container">
     <div class="section-header-center">
       <div class="section-kicker">Resources</div>
       <h2 class="section-title">Documentation Center</h2>
-      <p class="section-sub">
-        Official resources and documents of LOGIRAD.
-      </p>
+      <p class="section-sub">Official resources and documents of LOGIRAD.</p>
     </div>
-    <div class="doc-viewer" *ngIf="docCategories.length > 0">
-      <!-- Left: CATEGORIES with count pills -->
-      <div class="doc-viewer-left">
-        <h3 class="doc-panel-heading">CATEGORIES</h3>
-        @for (cat of docCategories; track cat.id; let i = $index) {
-          <div
-            class="doc-category-row"
-            [class.is-selected]="selectedCategoryIndex === i"
-            (click)="selectCategory(i)"
-          >
-            <span class="doc-category-name">{{ cat.name }}</span>
-            <span class="doc-category-count">{{ cat.count }}</span>
-          </div>
-        }
-      </div>
-      <!-- Right: category then only "All documents" (name → published → preview after published text) -->
-      <div class="doc-viewer-right">
-        <ng-container *ngIf="activeCategory as cat">
-          <ng-container *ngIf="cat.documents.length > 0">
-            <h3 class="doc-right-heading"><span class="doc-right-bullet">•</span> {{ cat.name }}</h3>
 
-            <!-- All documents section only: no content before it. Each doc = name, published, then preview. -->
-            <button type="button" class="doc-list-toggle" (click)="toggleDocList()" [attr.aria-expanded]="docListExpanded">
-              All documents
-            </button>
-            <div class="doc-entries doc-entries--collapsible" [class.is-expanded]="docListExpanded">
-              <div
-                *ngFor="let doc of cat.documents; let i = index"
-                class="doc-item"
-                [class.is-selected]="selectedDocIndex === i"
-              >
-                <div class="doc-item-header" (click)="selectDocument(i)">
-                  <span class="doc-entry-title">{{ doc.title }}</span>
-                  <span class="doc-entry-meta" *ngIf="doc.publishedYear">Published in {{ doc.publishedYear }}</span>
-                </div>
-                <!-- Preview after the published text (for selected document) -->
-                <div class="doc-item-preview" *ngIf="selectedDocIndex === i">
-                  <div class="doc-preview-embed" *ngIf="isPdfDocument(doc)">
-                    <iframe [src]="getPdfSafeUrl(doc)" title="Preview of {{ doc.title }}" class="doc-preview-iframe"></iframe>
-                  </div>
-                  <a [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download" download>
-                    DOWNLOAD <span class="doc-download-arrow">↓</span>
-                  </a>
-                </div>
-              </div>
+    @if (docCategories.length > 0) {
+      <div class="doc-viewer">
+        <!-- Left: categories -->
+        <div class="doc-viewer-left">
+          <h3 class="doc-panel-heading">CATEGORIES</h3>
+          @for (cat of docCategories; track cat.id; let i = $index) {
+            <div
+              class="doc-category-row"
+              [class.is-selected]="selectedCategoryIndex === i"
+              (click)="selectCategory(i)"
+            >
+              <span class="doc-category-name">{{ cat.name }}</span>
+              <span class="doc-category-count">{{ cat.count }}</span>
             </div>
-          </ng-container>
-          <div class="doc-empty" *ngIf="cat.documents.length === 0">
-            <p>No documents in this category.</p>
-          </div>
-        </ng-container>
+          }
+        </div>
+
+        <!-- Right: documents -->
+        <div class="doc-viewer-right">
+          @if (activeCategory; as cat) {
+            @if (cat.documents.length > 0) {
+              <h3 class="doc-right-heading">
+                <span class="doc-right-bullet">•</span> {{ cat.name }}
+              </h3>
+              <div class="doc-entries">
+                @for (doc of cat.documents; track doc.title; let i = $index) {
+                  <div class="doc-item" [class.is-selected]="selectedDocIndex === i">
+                    <div class="doc-item-header" (click)="selectDocument(i)">
+                      <span class="doc-entry-title">{{ doc.title }}</span>
+                      @if (doc.publishedYear) {
+                        <span class="doc-entry-meta">Published in {{ doc.publishedYear }}</span>
+                      }
+                    </div>
+                    @if (selectedDocIndex === i) {
+                      <div class="doc-item-preview">
+                        @if (isPdfDocument(doc)) {
+                          <div class="doc-preview-embed">
+                            <iframe [src]="getPdfSafeUrl(doc)" [title]="'Preview of ' + doc.title" class="doc-preview-iframe"></iframe>
+                          </div>
+                        }
+                        @if (doc.href) {
+                          <a [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download" download>
+                            DOWNLOAD <span class="doc-download-arrow">↓</span>
+                          </a>
+                        }
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            } @else {
+              <div class="doc-empty"><p>No documents in this category.</p></div>
+            }
+          }
+        </div>
       </div>
-    </div>
+    }
   </div>
 </section>

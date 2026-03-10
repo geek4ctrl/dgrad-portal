@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ScrollInDirective } from '../../shared/scroll-in.directive';
 
 interface GalleryItem {
   title: string;
@@ -13,7 +14,7 @@ interface GalleryItem {
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ScrollInDirective],
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
