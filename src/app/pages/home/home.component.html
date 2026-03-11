@@ -82,16 +82,16 @@
   </div>
 </div>
 
-<!-- ── What We Offer ─────────────────────────────────── -->
-<section class="section offer" id="services" appScrollIn>
+<!-- ── What LOGIRAD Is ───────────────────────────────── -->
+<section class="section offer" id="presentation" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">Ce que nous offrons</div>
+      <div class="section-kicker">Présentation</div>
       <h2 class="section-title">UNE CHAÎNE NUMÉRISÉE DE BOUT EN BOUT</h2>
       <p class="section-sub">
-        LOGIRAD est le logiciel intégré de gestion des recettes non fiscales administré par la DGRAD.
-        Il couvre l'assiette, la liquidation, l'ordonnancement, le recouvrement, le contrôle, les exonérations
-        et la gestion du contentieux, ainsi que la production de tableaux de bord.
+        LOGIRAD est le logiciel de gestion des recettes non fiscales de la DGRAD permettant la constatation,
+        la liquidation, l'ordonnancement, le recouvrement, le contrôle, la gestion des exonérations et des
+        contentieux ainsi que l'édition des tableaux de bord. Rendu obligatoire par le décret n°22/18 du 4 mai 2022.
       </p>
     </div>
     <div class="offer-grid">
@@ -108,6 +108,68 @@
   </div>
 </section>
 
+<!-- ── 5 Application Modules ─────────────────────────── -->
+<section class="section app-modules-section" id="app-modules" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Architecture logicielle</div>
+      <h2 class="section-title">LES 5 MODULES DE L'APPLICATION</h2>
+      <p class="section-sub">
+        LOGIRAD est structurée en cinq modules complémentaires couvrant l'ensemble du cycle de gestion,
+        de l'administration jusqu'aux échanges avec les systèmes partenaires.
+      </p>
+    </div>
+    <div class="app-modules-grid">
+      @for (mod of appModules; track mod.num) {
+        <div class="app-module-card">
+          <div class="app-module-num">{{ mod.num }}</div>
+          <div class="app-module-icon">{{ mod.icon }}</div>
+          <h4>{{ mod.title }}</h4>
+          <p>{{ mod.desc }}</p>
+          @if (mod.partners && mod.partners.length > 0) {
+            <div class="app-module-partners">
+              @for (p of mod.partners; track p) {
+                <span class="app-module-partner-chip">{{ p }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Dashboard Overview ────────────────────────────── -->
+<section class="section dashboard-section" id="tableau-bord" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Interface utilisateur</div>
+      <h2 class="section-title">TABLEAU DE BORD & NAVIGATION</h2>
+      <p class="section-sub">
+        La page d'accueil de LOGIRAD est un tableau de bord personnalisé selon le profil utilisateur,
+        offrant un accès en un clic à tous les modules applicatifs.
+      </p>
+    </div>
+    <div class="dashboard-grid">
+      @for (panel of dashboardPanels; track panel.title) {
+        <div class="dashboard-panel">
+          <div class="dashboard-panel-icon">{{ panel.icon }}</div>
+          <div>
+            <h4>{{ panel.title }}</h4>
+            <p>{{ panel.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="dashboard-note">
+      <span>⚠️</span>
+      <p>La barre de menu affiche votre <strong>Ministère</strong>, <strong>Service d'assiette</strong> et
+        <strong>Centre d'ordonnancement</strong>. Si ces informations ne correspondent pas à votre service,
+        contactez immédiatement l'administrateur LOGIRAD.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── User Profiles ─────────────────────────────────── -->
 <section class="section profiles-section" id="profils" appScrollIn>
   <div class="container">
@@ -115,7 +177,7 @@
       <div class="section-kicker">Gestion des accès</div>
       <h2 class="section-title">PROFILS UTILISATEURS LOGIRAD</h2>
       <p class="section-sub">
-        Chaque utilisateur dispose d'un profil défini par l'administrateur système, avec des droits
+        Chaque utilisateur dispose d'un profil défini par l'administrateur système avec des droits
         d'accès correspondant à son rôle dans la chaîne des recettes.
       </p>
     </div>
@@ -139,14 +201,14 @@
   </div>
 </section>
 
-<!-- ── Integrated Services / Functional modules ────── -->
+<!-- ── Functional Modules (4-per-row cards) ──────────── -->
 <section class="section services-section" id="modules" appScrollIn>
   <div class="container">
     <div class="section-header-center">
       <div class="section-kicker">Modules fonctionnels</div>
       <h2 class="section-title">SERVICES INTÉGRÉS LOGIRAD</h2>
       <p class="section-sub">
-        LOGIRAD centralise les principaux modules décrits dans le manuel utilisateur : assujettis, déclarations,
+        LOGIRAD centralise les principaux modules de gestion : assujettis, déclarations, dossiers,
         taxation, ordonnancement, contrôle, recouvrement et contentieux.
       </p>
     </div>
@@ -166,99 +228,109 @@
   </div>
 </section>
 
-<!-- ── Controleurs & Receveurs ───────────────────────── -->
-<section class="section roles-section" id="roles" appScrollIn>
+<!-- ── Taxation Workflow ──────────────────────────────── -->
+<section class="section taxation-section" id="taxation" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">Rôles spécialisés</div>
-      <h2 class="section-title">CONTRÔLEURS & RECEVEURS</h2>
+      <div class="section-kicker">Processus de taxation</div>
+      <h2 class="section-title">TYPES DE TAXATIONS & WORKFLOW</h2>
       <p class="section-sub">
-        Ces deux profils clés assurent la bonne exécution de la chaîne de recouvrement des recettes
-        non fiscales au sein de la DGRAD.
+        LOGIRAD gère quatre types de taxations distincts. Chaque note de taxation suit un circuit
+        de validation avant d'être transmise à l'ordonnateur.
       </p>
     </div>
-    <div class="roles-grid">
 
-      <!-- Controleurs column -->
-      <div class="role-panel role-panel--blue">
-        <div class="role-panel-header">
-          <div class="role-panel-icon">🔍</div>
-          <div>
-            <h3>Contrôleurs</h3>
-            <p>Validation des ordonnancements</p>
-          </div>
+    <!-- 4 taxation types -->
+    <div class="tax-types-grid">
+      @for (tt of taxationTypes; track tt.label) {
+        <div class="tax-type-card">
+          <div class="tax-type-badge" [style.background]="tt.color">{{ tt.tag }}</div>
+          <div class="tax-type-icon">{{ tt.icon }}</div>
+          <h4>{{ tt.label }}</h4>
+          <p>{{ tt.desc }}</p>
         </div>
-        <div class="role-tasks">
-          @for (task of controleurTasks; track task.label) {
-            <div class="role-task">
-              <div class="role-task-icon">{{ task.icon }}</div>
-              <div>
-                <strong>{{ task.label }}</strong>
-                <span>{{ task.desc }}</span>
-              </div>
-            </div>
-          }
-        </div>
-        <div class="role-panel-footer">
-          <span class="role-menu-label">Menu principal :</span>
-          <div class="role-chips">
-            <span class="role-chip">Ordonnancements à contrôler</span>
-            <span class="role-chip">Ordonnancements contrôlés</span>
-            <span class="role-chip">Ordonnancements à problème</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Receveurs column -->
-      <div class="role-panel role-panel--gold">
-        <div class="role-panel-header">
-          <div class="role-panel-icon">💳</div>
-          <div>
-            <h3>Receveurs</h3>
-            <p>Recouvrement & poursuites</p>
-          </div>
-        </div>
-        <div class="role-tasks">
-          @for (task of receveurTasks; track task.label) {
-            <div class="role-task">
-              <div class="role-task-icon">{{ task.icon }}</div>
-              <div>
-                <strong>{{ task.label }}</strong>
-                <span>{{ task.desc }}</span>
-              </div>
-            </div>
-          }
-        </div>
-        <div class="role-panel-footer">
-          <span class="role-menu-label">Modules accessibles :</span>
-          <div class="role-chips">
-            <span class="role-chip">Paiement</span>
-            <span class="role-chip">Apurement</span>
-            <span class="role-chip">Acquit libératoire</span>
-            <span class="role-chip">Rôle</span>
-            <span class="role-chip">Poursuites</span>
-          </div>
-        </div>
-      </div>
-
+      }
     </div>
 
-    <!-- Recouvrement timeline -->
-    <div class="recovery-flow" appScrollIn>
-      <div class="recovery-flow-title">
-        <span>📋</span> Processus de recouvrement par voie de rôle
+    <!-- Taxation 4-step workflow -->
+    <div class="tax-workflow">
+      <div class="tax-workflow-title">
+        <span>⚙️</span> Étapes de création d'une taxation (Taxateur)
       </div>
-      <div class="recovery-steps">
-        @for (step of recoverySteps; track step.label; let last = $last) {
-          <div class="recovery-step">
-            <div class="recovery-step-inner">
-              <div class="recovery-step-num">{{ step.num }}</div>
-              <p class="recovery-step-label">{{ step.label }}</p>
-              <span class="recovery-step-delay">{{ step.delay }}</span>
+      <div class="tax-workflow-steps">
+        @for (step of taxationWorkflow; track step.num; let last = $last) {
+          <div class="tax-wf-step">
+            <div class="tax-wf-inner">
+              <div class="tax-wf-num">{{ step.num }}</div>
+              <p class="tax-wf-label">{{ step.label }}</p>
             </div>
             @if (!last) {
-              <div class="recovery-step-arrow">→</div>
+              <div class="tax-wf-arrow">→</div>
             }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Chef-taxateur validation note -->
+    <div class="tax-validation-note">
+      <div class="tvn-icon">✅</div>
+      <div>
+        <strong>Validation par le Chef-taxateur</strong>
+        <p>Seul le profil Chef-taxateur peut valider ou rejeter les notes de taxation de son service ou centre
+          d'ordonnancement. Il sélectionne son avis (Valider / Rejeter), renseigne une observation et clôture la note.
+          La note validée passe automatiquement en attente d'ordonnancement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ordonnancement Workflow ────────────────────────── -->
+<section class="section ordonnancement-section" id="ordonnancement" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Ordonnancement</div>
+      <h2 class="section-title">GESTION DES ORDONNANCEMENTS</h2>
+      <p class="section-sub">
+        L'ordonnateur autorise les notes de taxation validées et produit les notes de perception (bons à payer)
+        transmises aux assujettis pour le paiement.
+      </p>
+    </div>
+    <div class="ordo-layout">
+      <!-- 3-step workflow -->
+      <div class="ordo-workflow">
+        @for (step of ordonancementSteps; track step.num; let last = $last) {
+          <div class="ordo-step">
+            <div class="ordo-step-inner">
+              <div class="ordo-step-num">{{ step.num }}</div>
+              <div class="ordo-step-icon">{{ step.icon }}</div>
+              <div class="ordo-step-text">
+                <h4>{{ step.title }}</h4>
+                <p>{{ step.desc }}</p>
+              </div>
+            </div>
+            @if (!last) {
+              <div class="ordo-step-arrow">
+                <svg viewBox="0 0 24 56" fill="none">
+                  <line x1="12" y1="0" x2="12" y2="36" stroke="#c9a84c" stroke-width="2.5" stroke-dasharray="6 4"/>
+                  <path d="M3 33 L12 52 L21 33 Z" fill="#c9a84c"/>
+                </svg>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Registres panel -->
+      <div class="ordo-registers">
+        <div class="ordo-registers-title">📋 Registres disponibles</div>
+        @for (reg of ordonancementRegistres; track reg.label) {
+          <div class="ordo-reg-row">
+            <div class="ordo-reg-icon">{{ reg.icon }}</div>
+            <div>
+              <strong>{{ reg.label }}</strong>
+              <span>{{ reg.desc }}</span>
+            </div>
           </div>
         }
       </div>
@@ -278,18 +350,18 @@
       </p>
     </div>
     <div class="security-grid">
-
-      <!-- Login mock card -->
+      <!-- Login mock -->
       <div class="security-login-card">
         <div class="login-mock">
           <div class="login-mock-bar">
             <div class="login-mock-dots">
               <span></span><span></span><span></span>
             </div>
-            <div class="login-mock-url">🔒 logirad.dgrad.cd</div>
+            <div class="login-mock-url">🔒 www.logirad.dgrad.cd</div>
           </div>
           <div class="login-mock-body">
             <div class="login-mock-logo">dgrad<strong>.gouv.cd</strong></div>
+            <p class="login-mock-tagline">La plateforme de gestion des recettes de la DGRAD</p>
             <p class="login-mock-welcome">Bienvenue au portail LOGIRAD</p>
             <div class="login-mock-field">
               <span>👤</span>
@@ -300,12 +372,12 @@
               <span>••••••••</span>
             </div>
             <div class="login-mock-btn">→ SE CONNECTER</div>
-            <p class="login-mock-forgot">Mot de passe oublié ?</p>
+            <p class="login-mock-forgot">Cliquez ici si vous avez oublié votre mot de passe ?</p>
           </div>
         </div>
       </div>
 
-      <!-- Security rules -->
+      <!-- Security rules + change password -->
       <div class="security-rules">
         @for (rule of securityRules; track rule.title) {
           <div class="security-rule-card">
@@ -320,11 +392,12 @@
           <div class="security-change-icon">🔄</div>
           <div>
             <strong>Modifier son mot de passe</strong>
-            <p>Cliquez sur votre nom en haut à gauche → <em>[Modifier votre mot de passe]</em> → saisissez l'ancien, puis le nouveau deux fois, puis validez.</p>
+            <p>Cliquez sur votre nom en haut à gauche de la barre horizontale →
+              <em>[Modifier votre mot de passe]</em> → saisissez l'ancien mot de passe,
+              puis le nouveau à deux reprises → cliquez sur <em>[Modifier]</em> pour valider.</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -334,22 +407,25 @@
   <div class="container">
     <div class="isys-card">
       <div class="isys-left">
-        <div class="isys-kicker">Interopérabilité</div>
-        <h2>ISYS‑Régies & LOGIRAD</h2>
+        <div class="isys-kicker">Encadré — Interopérabilité</div>
+        <h2>C'est quoi ISYS‑Régies ?</h2>
         <p>
-          Opérationnel sur toute l'étendue de la RDC depuis janvier 2022, ISYS‑Régies automatise
-          la procédure de perception des recettes dès l'encaissement par les banques jusqu'au
-          reversement à la Banque Centrale du Congo et à la comptabilisation dans le compte général du Trésor.
+          Opérationnel sur toute l'étendue de la RDC depuis janvier 2022 (plus de 6 000 utilisateurs formés),
+          ISYS‑Régies automatise la procédure de perception des recettes, dès l'encaissement par les
+          intervenants financiers (banques, établissements de crédit), jusqu'au reversement à la Banque
+          Centrale du Congo et à la comptabilisation dans le compte général du Trésor.
         </p>
         <p>
-          Son intégration avec LOGIRAD assure la dématérialisation complète de la procédure d'apurement
-          et apporte transparence et fiabilité sur les recettes et la trésorerie de l'État.
+          En plus de la dématérialisation de la procédure d'apurement, il apporte transparence et fiabilité
+          sur les recettes et la trésorerie de l'État. LOGIRAD s'interface avec ISYS‑Régies via son
+          module d'échanges de données (API).
         </p>
         <div class="isys-badges">
           <span>✔ Encaissement automatisé</span>
           <span>✔ Reversement BCC</span>
           <span>✔ Apurement dématérialisé</span>
           <span>✔ +6 000 utilisateurs formés</span>
+          <span>✔ Interfacé avec LOGIRAD (API)</span>
         </div>
       </div>
       <div class="isys-right">
@@ -376,8 +452,8 @@
       <div class="section-kicker">Déploiement national</div>
       <h2 class="section-title">Extension de la procédure dématérialisée LOGIRAD</h2>
       <p class="section-sub">
-        Conformément aux directives gouvernementales, l'utilisation de la plateforme devient
-        la norme obligatoire pour optimiser la mobilisation des recettes non fiscales.
+        Rendue obligatoire par décret, la mise en production a démarré au 1er janvier 2023 pour 5 services
+        d'assiette sur 51, visant 1 300 utilisateurs. Le déploiement s'étend progressivement aux 26 provinces.
       </p>
     </div>
     <div class="ext-grid">

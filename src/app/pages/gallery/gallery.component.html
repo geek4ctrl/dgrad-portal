@@ -1,45 +1,126 @@
-<!-- ── Hero: same structure as Contact / newsletter section ── -->
+<!-- ── Hero ──────────────────────────────────────────────── -->
 <section class="page-hero page-hero--gallery">
-  <div class="hero-bg" style="background-image: url('assets/Home.jpg');"></div>
+  <div class="hero-bg" style="background-image: url('assets/images/gallery-hero.jpg');"></div>
   <div class="hero-overlay"></div>
-  <div class="container hero-inner">
-    <div class="hero-left-block">
-      <h1>GALERIE<br/>PHOTOS</h1>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-right-block">
-      <p>Retrouvez en images les moments forts des formations LOGIRAD à travers la République Démocratique du Congo.</p>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left-block">
+        <h1>GALERIE<br/><em>PHOTOS</em></h1>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-right-block">
+        <p>
+          Retrouvez en images les moments forts des formations et déploiements LOGIRAD à travers
+          la République Démocratique du Congo — agents formés, provinces couvertes, équipes mobilisées.
+        </p>
+        <div class="hero-stats">
+          @for (s of heroStats; track s.label) {
+            <div class="hero-stat">
+              <span class="hero-stat-val">{{ s.value }}</span>
+              <span class="hero-stat-lbl">{{ s.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── Gallery grid: newsletter-style (navy, cards) ───────── -->
-<section class="gallery-section gallery-section--newsletter-style" appScrollIn>
+<!-- ── Filter bar ─────────────────────────────────────────── -->
+<div class="filter-bar-wrap">
   <div class="container">
-    <div class="section-header-center">
-      <div class="section-kicker">Formations</div>
-      <h2 class="section-title">MOMENTS FORTS LOGIRAD</h2>
-      <p class="section-sub">
-        Formations et déploiements LOGIRAD dans les provinces.
-      </p>
-    </div>
-    <div class="gallery-grid gallery-grid--cards">
-        <article class="gallery-card" *ngFor="let item of items">
-        <div class="gallery-image">
-          <img [src]="item.image" [alt]="item.title" (error)="onImageError(item)" />
-        </div>
-        <div class="gallery-body">
-          <div class="gallery-meta">
-            <span class="gallery-tag">{{ item.category }}</span>
-            <span class="gallery-date">{{ item.date }}</span>
-          </div>
-          <h2>{{ item.title }}</h2>
-        </div>
-      </article>
-    </div>
-    <div class="gallery-cta">
-      <h3 class="gallery-cta-heading">Vous souhaitez obtenir plus d'informations sur nos déploiements ?</h3>
-      <a routerLink="/contact" class="btn-gallery-cta">Nous contacter</a>
+    <div class="filter-bar">
+      <div class="filter-label">Filtrer par :</div>
+      <div class="filter-chips">
+        @for (cat of categories; track cat) {
+          <button
+            class="filter-chip"
+            [class.is-active]="activeCategory === cat"
+            (click)="setCategory(cat)"
+          >{{ cat }}</button>
+        }
+      </div>
+      <div class="filter-count">{{ filteredItems.length }} photo{{ filteredItems.length !== 1 ? 's' : '' }}</div>
     </div>
   </div>
+</div>
+
+<!-- ── Gallery grid ───────────────────────────────────────── -->
+<section class="gallery-section" appScrollIn>
+  <div class="container">
+
+    @if (filteredItems.length === 0) {
+      <div class="gallery-empty">
+        <span>📷</span>
+        <p>Aucune photo pour cette catégorie.</p>
+      </div>
+    }
+
+    <div class="gallery-grid">
+      @for (item of filteredItems; track item.id) {
+        <article
+          class="gallery-card"
+          [class.gallery-card--wide]="item.wide"
+          (click)="openLightbox(item)"
+        >
+          <div class="gallery-image">
+            <img
+              [src]="item.image"
+              [alt]="item.title"
+              loading="lazy"
+              (error)="onImageError($event)"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-zoom">🔍</span>
+            </div>
+          </div>
+          <div class="gallery-body">
+            <div class="gallery-meta">
+              <span class="gallery-tag">{{ item.category }}</span>
+              <span class="gallery-date">{{ item.date }}</span>
+            </div>
+            <h2>{{ item.title }}</h2>
+            @if (item.location) {
+              <p class="gallery-location">📍 {{ item.location }}</p>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="gallery-cta">
+      <h3 class="gallery-cta-heading">Vous souhaitez obtenir plus d'informations sur nos déploiements ?</h3>
+      <a routerLink="/contact" class="btn-gallery-cta">Nous contacter →</a>
+    </div>
+
+  </div>
 </section>
+
+<!-- ── Lightbox ───────────────────────────────────────────── -->
+@if (lightboxItem) {
+  <div class="lightbox-backdrop" (click)="closeLightbox()">
+    <div class="lightbox-dialog" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeLightbox()" aria-label="Fermer">✕</button>
+      <div class="lightbox-img-wrap">
+        <img [src]="lightboxItem.image" [alt]="lightboxItem.title" />
+      </div>
+      <div class="lightbox-info">
+        <span class="lightbox-tag">{{ lightboxItem.category }}</span>
+        <h3>{{ lightboxItem.title }}</h3>
+        @if (lightboxItem.location) {
+          <p class="lightbox-location">📍 {{ lightboxItem.location }}</p>
+        }
+        @if (lightboxItem.desc) {
+          <p class="lightbox-desc">{{ lightboxItem.desc }}</p>
+        }
+        <span class="lightbox-date">{{ lightboxItem.date }}</span>
+      </div>
+      <div class="lightbox-nav">
+        <button class="lightbox-prev" (click)="prevItem()" [disabled]="lightboxIndex === 0">← Précédent</button>
+        <span class="lightbox-counter">{{ lightboxIndex + 1 }} / {{ filteredItems.length }}</span>
+        <button class="lightbox-next" (click)="nextItem()" [disabled]="lightboxIndex === filteredItems.length - 1">Suivant →</button>
+      </div>
+    </div>
+  </div>
+}

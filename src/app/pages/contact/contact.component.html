@@ -1,151 +1,231 @@
-<!-- ── Page Hero ─────────────────────────────────────── -->
+<!-- ── Hero ──────────────────────────────────────────────── -->
 <section class="page-hero">
-  <div class="hero-bg" style="background-image: url('assets/Contact.jpg');"></div>
+  <div class="hero-bg" style="background-image: url('assets/images/contact-hero.jpg');"></div>
   <div class="hero-overlay"></div>
-  <div class="container hero-inner">
-    <div class="hero-left-block">
-      <h1>CONTACT<br/>US</h1>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-right-block">
-      <p>A question about your access or a technical problem?<br/>Our teams are at your disposal.</p>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left-block">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          Contact
+        </div>
+        <h1>NOUS<br/><em>CONTACTER</em></h1>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-right-block">
+        <p>
+          La DGRAD et son équipe LOGIRAD sont à votre disposition pour toute question
+          relative à la plateforme, aux formations ou au déploiement dans votre province.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── Contact Form Section ──────────────────────────── -->
+<!-- ── Contact section ───────────────────────────────────── -->
 <section class="contact-section" appScrollIn>
   <div class="container">
-    <h2 class="contact-heading">Contact Us</h2>
+    <div class="contact-layout">
 
-    <div class="contact-card">
-      <div class="contact-form-col" [formGroup]="contactForm">
-        <div class="field-group">
-          <input
-            type="text"
-            formControlName="name"
-            placeholder="Your Name*"
-            [class.field-invalid]="(contactForm.get('name')?.touched || submitted) && contactForm.get('name')?.invalid"
-          />
-          @if ((contactForm.get('name')?.touched || submitted) && contactForm.get('name')?.invalid && contactForm.get('name')?.errors) {
-            <p class="field-error">
-              @if (contactForm.get('name')?.errors?.['required']) {
-                Name is required.
-              }
-              @if (contactForm.get('name')?.errors?.['minlength']) {
-                Name must be at least 2 characters.
-              }
-            </p>
-          }
-        </div>
-        <div class="field-group">
-          <input
-            type="email"
-            formControlName="email"
-            placeholder="Your Email*"
-            [class.field-invalid]="(contactForm.get('email')?.touched || submitted) && contactForm.get('email')?.invalid"
-          />
-          @if ((contactForm.get('email')?.touched || submitted) && contactForm.get('email')?.invalid && contactForm.get('email')?.errors) {
-            <p class="field-error">
-              @if (contactForm.get('email')?.errors?.['required']) {
-                Email is required.
-              }
-              @if (contactForm.get('email')?.errors?.['email']) {
-                Please enter a valid email address.
-              }
-            </p>
-          }
-        </div>
-        <div class="field-group">
-          <textarea
-            rows="5"
-            formControlName="message"
-            placeholder="Your Message"
-            [class.field-invalid]="(contactForm.get('message')?.touched || submitted) && contactForm.get('message')?.invalid"
-          ></textarea>
-          @if ((contactForm.get('message')?.touched || submitted) && contactForm.get('message')?.invalid && contactForm.get('message')?.errors) {
-            <p class="field-error">
-              @if (contactForm.get('message')?.errors?.['required']) {
-                Message is required.
-              }
-              @if (contactForm.get('message')?.errors?.['minlength']) {
-                Message must be at least 10 characters.
-              }
-            </p>
-          }
-        </div>
-        <button
-          type="button"
-          class="btn-send"
-          (click)="sendMessage()"
-          [disabled]="contactForm.invalid"
-        >
-          Send A Message
-        </button>
-      </div>
+      <!-- ── Left: info sidebar ─────────────────────────── -->
+      <aside class="contact-info">
 
-      <div class="contact-info-col">
-        <div class="info-block">
-          <p class="info-label">Address:</p>
-          <p class="info-value">
-            Boulevard Colonel Tshatshi<br/>
-            Kinshasa-Gombe, RDC
-          </p>
-        </div>
-        <div class="info-block">
-          <p class="info-label">Phone:</p>
-          <p class="info-value">+243 (21) 000 0000</p>
-        </div>
-        <div class="info-block">
-          <p class="info-label">Email institutionnel:</p>
-          <!-- &#64; is the Angular-safe escape for the @ symbol -->
-          <p class="info-value">info&#64;dgrad.cd</p>
-        </div>
-        <div class="info-block">
-          <p class="info-label">Support LOGIRAD:</p>
-          <p class="info-value">support.logirad&#64;dgrad.cd</p>
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <div class="info-card-body">
+            <span class="info-card-label">Adresse</span>
+            <span class="info-card-value">Avenue des Huileries, Commune de Gombe</span>
+            <span class="info-card-sub">Kinshasa, République Démocratique du Congo</span>
+          </div>
         </div>
 
+        <div class="info-card">
+          <div class="info-card-icon">📞</div>
+          <div class="info-card-body">
+            <span class="info-card-label">Téléphone</span>
+            <a href="tel:+243815550000" class="info-card-value info-card-link">+243 81 555 0000</a>
+            <span class="info-card-sub">Lun – Jeu 07h30 – 16h00 · Ven jusqu'à 13h00</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-icon">✉️</div>
+          <div class="info-card-body">
+            <span class="info-card-label">E-mail institutionnel</span>
+            <a href="mailto:info@dgrad.cd" class="info-card-value info-card-link">info&#64;dgrad.cd</a>
+          </div>
+        </div>
+
+        <div class="info-card info-card--support">
+          <div class="info-card-icon">🛠️</div>
+          <div class="info-card-body">
+            <span class="info-card-label">Support technique LOGIRAD</span>
+            <a href="mailto:support.logirad@dgrad.cd" class="info-card-value info-card-link">support.logirad&#64;dgrad.cd</a>
+            <span class="info-card-sub">Réponse sous 24 – 48 h ouvrables</span>
+          </div>
+        </div>
+
+        <!-- Social media -->
         <div class="info-socials">
-          <a href="#" aria-label="Facebook" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="Twitter" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
+          <span class="info-socials-label">Suivez-nous</span>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter / X" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener" class="btn-login">
-          Accéder à LOGIRAD
+        <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener" class="btn-portal">
+          Accéder à LOGIRAD →
         </a>
+
+      </aside>
+
+      <!-- ── Right: form ─────────────────────────────────── -->
+      <div class="contact-form-wrap">
+        <div class="form-header">
+          <h2>Envoyer un message</h2>
+          <p>Remplissez le formulaire et notre équipe vous répondra dans les meilleurs délais.</p>
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" class="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-field" [class.has-error]="submitted && contactForm.get('name')?.invalid">
+              <label for="name">Nom complet <span class="req">*</span></label>
+              <input id="name" type="text" formControlName="name"
+                     placeholder="Votre nom et prénom" autocomplete="name" />
+              @if (submitted && contactForm.get('name')?.errors?.['required']) {
+                <span class="field-error">Le nom est requis.</span>
+              }
+              @if (submitted && contactForm.get('name')?.errors?.['minlength']) {
+                <span class="field-error">Minimum 2 caractères.</span>
+              }
+            </div>
+            <div class="form-field">
+              <label for="organisation">Organisation</label>
+              <input id="organisation" type="text" formControlName="organisation"
+                     placeholder="Ministère / Service d'assiette" autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field" [class.has-error]="submitted && contactForm.get('email')?.invalid">
+              <label for="email">Adresse e-mail <span class="req">*</span></label>
+              <input id="email" type="email" formControlName="email"
+                     placeholder="votre&#64;email.cd" autocomplete="email" />
+              @if (submitted && contactForm.get('email')?.errors?.['required']) {
+                <span class="field-error">L'e-mail est requis.</span>
+              }
+              @if (submitted && contactForm.get('email')?.errors?.['email']) {
+                <span class="field-error">Adresse e-mail invalide.</span>
+              }
+            </div>
+            <div class="form-field">
+              <label for="phone">Téléphone</label>
+              <input id="phone" type="tel" formControlName="phone"
+                     placeholder="+243 8X X XX XX XX" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-field" [class.has-error]="submitted && contactForm.get('subject')?.invalid">
+            <label for="subject">Sujet <span class="req">*</span></label>
+            <select id="subject" formControlName="subject">
+              <option value="">— Sélectionner un sujet —</option>
+              @for (opt of subjectOptions; track opt.value) {
+                <option [value]="opt.value">{{ opt.label }}</option>
+              }
+            </select>
+            @if (submitted && contactForm.get('subject')?.errors?.['required']) {
+              <span class="field-error">Veuillez sélectionner un sujet.</span>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="province">Province concernée</label>
+            <select id="province" formControlName="province">
+              <option value="">— Toutes les provinces —</option>
+              @for (p of provinces; track p) {
+                <option [value]="p">{{ p }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-field" [class.has-error]="submitted && contactForm.get('message')?.invalid">
+            <label for="message">Message <span class="req">*</span></label>
+            <textarea id="message" formControlName="message" rows="5"
+                      placeholder="Décrivez votre demande en détail..."></textarea>
+            @if (submitted && contactForm.get('message')?.errors?.['required']) {
+              <span class="field-error">Le message est requis.</span>
+            }
+            @if (submitted && contactForm.get('message')?.errors?.['minlength']) {
+              <span class="field-error">Minimum 10 caractères.</span>
+            }
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note">
+              <span>🔒</span>
+              Données traitées conformément aux procédures DGRAD / Ministère des Finances.
+            </p>
+            <button type="submit" class="btn-submit">Envoyer →</button>
+          </div>
+
+        </form>
+
+        @if (messageSent) {
+          <div class="form-success">
+            <div class="success-icon">✅</div>
+            <h3>Message envoyé !</h3>
+            <p>Notre équipe vous répondra dans les meilleurs délais. Merci de votre intérêt pour LOGIRAD.</p>
+            <button class="btn-reset" (click)="resetForm()">Envoyer un autre message</button>
+          </div>
+        }
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── Map ───────────────────────────────────────────── -->
+<!-- ── Map ───────────────────────────────────────────────── -->
 <div class="map-section">
   <iframe
     src="https://maps.google.com/maps?q=Kinshasa,+Democratic+Republic+of+the+Congo&output=embed&z=13"
     width="100%"
-    height="340"
+    height="360"
     style="border:0; display:block;"
     allowfullscreen
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-    title="DGRAD location map"
+    title="Localisation DGRAD — Kinshasa"
   ></iframe>
 </div>
 
+<!-- ── Footer bottom bar ─────────────────────────────────── -->
 <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <span>© DGRAD – LOGIRAD. Tous droits réservés.</span>
-      <a href="http://portail.dgrad.cd/" target="_blank" rel="noopener">Portail DGRAD</a>
-    </div>
+  <div class="container footer-bottom-inner">
+    <span>© DGRAD – LOGIRAD. Tous droits réservés.</span>
+    <a href="http://portail.dgrad.cd/" target="_blank" rel="noopener">Portail DGRAD</a>
   </div>
+</div>

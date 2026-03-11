@@ -1174,3 +1174,499 @@
   margin: 0.25rem 0;
   opacity: 0.7;
 }
+
+// ══════════════════════════════════════════════════════════
+// APP MODULES (5 modules section)
+// ══════════════════════════════════════════════════════════
+.app-modules-section { background: var(--navy); }
+
+.app-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 1100px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px)  { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 480px)  { grid-template-columns: 1fr; }
+}
+
+.app-module-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: var(--r-md);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color .25s, background .25s;
+
+  &:last-child {
+    // API card — highlight slightly
+    border-color: rgba(201,168,76,.4);
+    background: rgba(201,168,76,.06);
+  }
+
+  &:hover {
+    background: rgba(201,168,76,.1);
+    border-color: rgba(201,168,76,.45);
+  }
+
+  .app-module-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: .12em;
+    opacity: .8;
+  }
+  .app-module-icon { font-size: 1.5rem; margin: 0.25rem 0; }
+
+  h4 {
+    font-family: var(--ff-display);
+    font-size: 0.88rem;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,.65);
+    line-height: 1.55;
+    margin: 0;
+    flex: 1;
+  }
+
+  .app-module-partners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+  .app-module-partner-chip {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--gold);
+    background: rgba(201,168,76,.12);
+    border: 1px solid rgba(201,168,76,.3);
+    border-radius: 20px;
+    padding: 0.15rem 0.55rem;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+// DASHBOARD SECTION
+// ══════════════════════════════════════════════════════════
+.dashboard-section {
+  background: linear-gradient(160deg, #111d2e 0%, #0d1b2e 100%);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 900px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 560px)  { grid-template-columns: 1fr; }
+}
+
+.dashboard-panel {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--r-md);
+  padding: 1.4rem 1.25rem;
+  display: flex;
+  gap: 0.9rem;
+
+  .dashboard-panel-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+
+  h4 {
+    font-family: var(--ff-display);
+    font-size: 0.88rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,.65);
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+.dashboard-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: var(--r-sm);
+  padding: 1rem 1.25rem;
+  margin-top: 1.75rem;
+
+  span { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,.75);
+    line-height: 1.6;
+    margin: 0;
+
+    strong { color: var(--gold); }
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+// TAXATION SECTION
+// ══════════════════════════════════════════════════════════
+.taxation-section {
+  background: var(--navy);
+}
+
+// 4 taxation type cards
+.tax-types-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 900px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 500px)  { grid-template-columns: 1fr; }
+}
+
+.tax-type-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-md);
+  padding: 1.4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity .25s;
+    background: linear-gradient(135deg, rgba(255,255,255,.03), transparent);
+  }
+  &:hover::after { opacity: 1; }
+
+  .tax-type-badge {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    align-self: flex-start;
+  }
+  .tax-type-icon { font-size: 1.5rem; }
+
+  h4 {
+    font-family: var(--ff-display);
+    font-size: 0.92rem;
+    color: var(--white);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,.62);
+    line-height: 1.55;
+    margin: 0;
+    flex: 1;
+  }
+}
+
+// Taxation 4-step workflow ribbon
+.tax-workflow {
+  margin-top: 2.5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: var(--r-md);
+  padding: 1.5rem 1.75rem;
+}
+
+.tax-workflow-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .04em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tax-workflow-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+
+  @media (max-width: 700px) { flex-direction: column; }
+}
+
+.tax-wf-step {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.tax-wf-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  background: rgba(201,168,76,.06);
+  border: 1px solid rgba(201,168,76,.22);
+  border-radius: var(--r-sm);
+  padding: 0.9rem 0.75rem;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.tax-wf-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tax-wf-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.tax-wf-arrow {
+  font-size: 1.1rem;
+  color: var(--gold);
+  padding: 0 0.5rem;
+  opacity: .7;
+  flex-shrink: 0;
+
+  @media (max-width: 700px) {
+    transform: rotate(90deg);
+    padding: 0.3rem 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Chef-taxateur validation note
+.tax-validation-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(5,150,105,.08);
+  border: 1px solid rgba(5,150,105,.3);
+  border-left: 4px solid #059669;
+  border-radius: var(--r-sm);
+  padding: 1.1rem 1.25rem;
+  margin-top: 1.5rem;
+
+  .tvn-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #34d399;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+// ORDONNANCEMENT SECTION
+// ══════════════════════════════════════════════════════════
+.ordonnancement-section {
+  background: linear-gradient(160deg, #0d1b2e 0%, #111d2e 100%);
+}
+
+.ordo-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 960px) { grid-template-columns: 1fr; }
+}
+
+// 3-step vertical workflow
+.ordo-workflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.ordo-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ordo-step-inner {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: var(--r-md);
+  padding: 1.4rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.ordo-step-num {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.ordo-step-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  line-height: 1;
+}
+
+// Text wrapper — takes all remaining space
+.ordo-step-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.ordo-step-inner h4 {
+  font-family: var(--ff-display);
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
+}
+
+.ordo-step-inner p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,.68);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ordo-step-arrow {
+  display: flex;
+  justify-content: center;
+  padding: 0.2rem 0;
+
+  svg {
+    width: 24px;
+    height: 56px;
+    overflow: visible;
+  }
+}
+
+// Registres panel
+.ordo-registers {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: var(--r-md);
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ordo-registers-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(201,168,76,.2);
+  margin-bottom: 1rem;
+}
+
+.ordo-reg-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+
+  &:last-child { border-bottom: none; }
+
+  .ordo-reg-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+
+  span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,.55);
+    line-height: 1.5;
+  }
+}
