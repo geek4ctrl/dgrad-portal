@@ -10,8 +10,8 @@
   --white: #ffffff;
   --muted: #8a96a8;
   --text: #1c2430;
-  --ff-display: 'Playfair Display', Georgia, serif;
-  --ff-body: 'DM Sans', system-ui, sans-serif;
+  --ff-display: 'Inter', system-ui, sans-serif;
+  --ff-body: 'Inter', system-ui, sans-serif;
   --r-sm: 0.5rem;
   --r-md: 0.875rem;
   --r-lg: 1.5rem;
@@ -38,8 +38,8 @@
   --gold-light: #e4c776;
   --gold-pale: #f5e9c8;
   --shadow-sm: 0 2px 12px rgba(13, 27, 46, 0.08);
-  --ff-display: 'Playfair Display', Georgia, serif;
-  --ff-body: 'DM Sans', system-ui, sans-serif;
+  --ff-display: 'Inter', system-ui, sans-serif;
+  --ff-body: 'Inter', system-ui, sans-serif;
   --r-sm: 0.5rem;
 
   --radius-sm: 0.5rem;
@@ -52,8 +52,8 @@
   --shadow-card: 0 12px 40px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.18);
 
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
-  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 *,
