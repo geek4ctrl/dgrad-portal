@@ -1,9 +1,20 @@
+.gitignore created by AI
+node_modules/
+dist/
+.tmp/
+.angular/
+**/*.log
+.env
+.env.*
+coverage/
+>>>>>>> a9e129df95741229bb075b200631af09d3b99374
 # Dependencies
 node_modules/
 
 # Build output
 dist/
 build/
+.tmp/
 
 # IDE files
 .vscode/
@@ -19,11 +30,27 @@ Thumbs.db
 logs/
 *.log
 npm-debug.log*
+**/*.log
 
 # Environment files
 .env
 .env.local
 .env.*.local
+.env.*
 
 # Angular cache
 .angular/
+
+# Test coverage
+coverage/
+=======
+.gitignore created by AI
+node_modules/
+dist/
+.tmp/
+.angular/
+**/*.log
+.env
+.env.*
+coverage/
+>>>>>>> a9e129df95741229bb075b200631af09d3b99374

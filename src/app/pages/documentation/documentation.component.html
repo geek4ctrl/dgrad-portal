@@ -1,158 +1,275 @@
-<!-- ── First section: same layout as Contact US ───────── -->
-<section class="page-hero page-hero--contact-style">
-  <div class="hero-bg" style="background-image: url('assets/DOCUMENTATION-bb206954-fb72-4632-a1b3-97f01e747348.png');"></div>
-  <div class="hero-overlay"></div>
-  <div class="container hero-inner">
-    <div class="hero-left-block">
-      <h1>DOCUMENTATION</h1>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-right-block">
-      <p>Official resources and documents of LOGIRAD.<br/>User manuals, regulatory texts and support.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── General information: in card ─────────────────────── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">General information</div>
-        <h2 class="section-title">INTEGRATED LOGIRAD SERVICES</h2>
-        <p class="section-sub">
-          LOGIRAD centralizes the main modules described in the user manual: subjects, declarations, files,
-          taxation, authorizations, control, recovery and litigation.
-        </p>
+<!-- ── Page Hero ───────────────────────────────────────── -->
+<section class="doc-hero">
+  <div class="doc-hero-bg"></div>
+  <div class="container">
+    <div class="doc-hero-inner">
+      <h1 class="doc-hero-title">
+        Documentation<br>
+        <em>LOGIRAD</em>
+      </h1>
+      <p class="doc-hero-sub">
+        Guide complet de la plateforme de gestion des recettes non fiscales de la DGRAD —
+        accès au portail, enregistrement, processus métier et modules fonctionnels.
+      </p>
+      <div class="doc-hero-actions">
+        <a href="assets/docs/Manuel_LOGIRAD_v2.pdf" download class="btn-doc-primary">
+          ⬇ Télécharger le manuel PDF
+        </a>
+        <button class="btn-doc-outline" (click)="scrollTo('portal-access')">
+          🔑 Accès au portail →
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── User profiles: in card ──────────────────────────── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">User profiles</div>
-        <h2 class="section-title">User profiles in LOGIRAD</h2>
-        <p class="section-sub">
-          Access is strictly controlled through predefined user profiles, each with specific responsibilities and permissions.
-        </p>
-      </div>
-    </div>
+<!-- ── Quick Nav tabs ─────────────────────────────────── -->
+<div class="doc-tabs-wrap" [class.sticky]="tabsSticky">
+  <div class="container">
+    <nav class="doc-tabs">
+      @for (tab of tabs; track tab.id) {
+        <button
+          class="doc-tab"
+          [class.active]="activeTab === tab.id"
+          (click)="setTab(tab.id)"
+        >
+          <span class="tab-icon">{{ tab.icon }}</span>
+          {{ tab.label }}
+        </button>
+      }
+    </nav>
   </div>
-</section>
+</div>
 
-<!-- ── Security &amp; access: in card (with resource links inside) ── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">Security &amp; access</div>
-        <h2 class="section-title">Security, warnings and precautions</h2>
-        <p class="section-sub">
-          The manuals insist on a secure and responsible use of LOGIRAD by all authorized users.
-        </p>
-      </div>
-      <ul class="bullet-list bullet-list--standalone">
-        <li *ngFor="let item of securityPoints">{{ item }}</li>
-      </ul>
-      <div class="resource-links-in-card">
-        <p class="resource-links-item">
-          LOGIRAD web application:
-          <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener">https://logirad.dgrad.cd</a>
-        </p>
-        <p class="resource-links-item">
-          Latest manuals and resources:
-          <a href="http://portail.dgrad.cd" target="_blank" rel="noopener">portail.dgrad.cd</a>
-        </p>
-        <p class="resource-links-item">
-          Technical support:
-          <a href="mailto:support.logirad&#64;dgrad.cd">support.logirad&#64;dgrad.cd</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Processes: in card ──────────────────────────────── -->
-<section class="docs-extra">
-  <div class="container container--narrow">
-    <div class="info-card">
-      <div class="section-header-center">
-        <div class="section-kicker">Processes</div>
-        <h2 class="section-title">Key business processes</h2>
-        <p class="section-sub">
-          LOGIRAD structures the revenue chain into a series of linked processes, from subject registration to dispute resolution.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Resources / Documentation Center (ref: portail.dgrad.cd/documentation) ── -->
-<section class="docs-extra docs-extra--centre">
+<!-- ── Portal Access & How to Connect ────────────────── -->
+<section class="section doc-section" id="portal-access" appScrollIn>
   <div class="container">
     <div class="section-header-center">
-      <div class="section-kicker">Resources</div>
-      <h2 class="section-title">Documentation Center</h2>
+      <div class="section-kicker">Accès à la plateforme</div>
+      <h2 class="section-title">Comment accéder au portail LOGIRAD</h2>
       <p class="section-sub">
-        Official resources and documents of LOGIRAD.
+        Le portail LOGIRAD est accessible via tout navigateur web moderne. Suivez ces étapes pour
+        vous connecter et commencer à utiliser la plateforme.
       </p>
     </div>
-    <div class="doc-viewer" *ngIf="docCategories.length > 0">
-      <!-- Left: CATEGORIES with count pills -->
-      <div class="doc-viewer-left">
-        <h3 class="doc-panel-heading">CATEGORIES</h3>
-        @for (cat of docCategories; track cat.id; let i = $index) {
-          <div
-            class="doc-category-row"
-            [class.is-selected]="selectedCategoryIndex === i"
-            (click)="selectCategory(i)"
-          >
-            <span class="doc-category-name">{{ cat.name }}</span>
-            <span class="doc-category-count">{{ cat.count }}</span>
+
+    <!-- Video / Screenshot placeholder -->
+    <div class="portal-demo-wrap">
+      <div class="portal-demo-card">
+        <div class="portal-demo-screen">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="browser-url">
+              <span class="url-lock">🔒</span>
+              <span>logirad.dgrad.gouv.cd</span>
+            </div>
           </div>
+          <div class="portal-login-mock">
+            <div class="login-logo">
+              <div class="login-logo-badge">L</div>
+              <span>LOGIRAD</span>
+            </div>
+            <div class="login-form-mock">
+              <div class="mock-field">
+                <div class="mock-label">Identifiant / NIF</div>
+                <div class="mock-input"></div>
+              </div>
+              <div class="mock-field">
+                <div class="mock-label">Mot de passe</div>
+                <div class="mock-input"></div>
+              </div>
+              <div class="mock-btn">Se connecter</div>
+            </div>
+          </div>
+        </div>
+        <div class="portal-demo-caption">
+          <span class="caption-badge">Interface de connexion</span>
+          Portail LOGIRAD — accessible via navigateur Chrome, Firefox ou Edge
+        </div>
+      </div>
+
+      <!-- Steps alongside the mockup -->
+      <div class="portal-steps">
+        <h3 class="portal-steps-title">Étapes de connexion</h3>
+        @for (step of accessSteps; track step.step; let last = $last) {
+          <div class="portal-step">
+            <div class="portal-step-num">{{ step.step }}</div>
+            <div class="portal-step-body">
+              <div class="portal-step-title">{{ step.title }}</div>
+              <p class="portal-step-desc">{{ step.desc }}</p>
+            </div>
+          </div>
+          @if (!last) {
+            <div class="portal-step-connector"></div>
+          }
         }
       </div>
-      <!-- Right: category then only "All documents" (name → published → preview after published text) -->
-      <div class="doc-viewer-right">
-        <ng-container *ngIf="activeCategory as cat">
-          <ng-container *ngIf="cat.documents.length > 0">
-            <h3 class="doc-right-heading"><span class="doc-right-bullet">•</span> {{ cat.name }}</h3>
+    </div>
+  </div>
+</section>
 
-            <!-- All documents section only: no content before it. Each doc = name, published, then preview. -->
-            <button type="button" class="doc-list-toggle" (click)="toggleDocList()" [attr.aria-expanded]="docListExpanded">
-              All documents
-            </button>
-            <div class="doc-entries doc-entries--collapsible" [class.is-expanded]="docListExpanded">
-              <div
-                *ngFor="let doc of cat.documents; let i = index"
-                class="doc-item"
-                [class.is-selected]="selectedDocIndex === i"
-              >
-                <div class="doc-item-header" (click)="selectDocument(i)">
-                  <span class="doc-entry-title">{{ doc.title }}</span>
-                  <span class="doc-entry-meta" *ngIf="doc.publishedYear">Published in {{ doc.publishedYear }}</span>
-                </div>
-                <!-- Preview after the published text (for selected document) -->
-                <div class="doc-item-preview" *ngIf="selectedDocIndex === i">
-                  <div class="doc-preview-embed" *ngIf="isPdfDocument(doc)">
-                    <iframe [src]="getPdfSafeUrl(doc)" title="Preview of {{ doc.title }}" class="doc-preview-iframe"></iframe>
+<!-- ── How to Register on the Portal ─────────────────── -->
+<section class="section doc-section register-section" id="register" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Enregistrement</div>
+      <h2 class="section-title">Comment s'enregistrer sur LOGIRAD</h2>
+      <p class="section-sub">
+        L'enregistrement d'un assujetti (personne physique, morale ou ONG) suit un processus
+        structuré en plusieurs étapes dans le module Sujets.
+      </p>
+    </div>
+
+    <div class="register-flow">
+      @for (step of registrationSteps; track step.step; let last = $last) {
+        <div class="reg-step-wrap">
+          <div class="reg-step-card">
+            <div class="reg-step-header">
+              <div class="reg-step-num">{{ step.step }}</div>
+              <span class="reg-step-icon">{{ step.icon }}</span>
+            </div>
+            <h4 class="reg-step-title">{{ step.title }}</h4>
+            <p class="reg-step-desc">{{ step.desc }}</p>
+            @if (step.fields && step.fields.length > 0) {
+              <div class="reg-step-fields">
+                @for (field of step.fields; track field) {
+                  <span class="reg-field-chip">{{ field }}</span>
+                }
+              </div>
+            }
+          </div>
+          @if (!last) {
+            <div class="reg-step-arrow">
+              <svg viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" y1="0" x2="12" y2="28" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+                <path d="M5 26 L12 36 L19 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Key Business Processes ─ with downward arrows ─── -->
+<section class="section doc-section processes-section" id="processes" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Processus métier</div>
+      <h2 class="section-title">Key Business Processes</h2>
+      <p class="section-sub">
+        La chaîne LOGIRAD suit un flux séquentiel de bout en bout, de l'identification de l'assujetti
+        jusqu'à la clearance en trésorerie. Chaque étape s'enchaîne à la suivante.
+      </p>
+    </div>
+
+    <div class="process-chain">
+      @for (proc of businessProcesses; track proc.step; let last = $last) {
+        <div class="process-item">
+          <div class="process-card" [class]="'process-card--' + proc.color">
+            <div class="process-card-top">
+              <div class="process-num">{{ proc.step }}</div>
+              <span class="process-icon">{{ proc.icon }}</span>
+            </div>
+            <h4 class="process-title">{{ proc.title }}</h4>
+            <p class="process-desc">{{ proc.desc }}</p>
+            <ul class="process-list">
+              @for (item of proc.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+          <!-- Downward arrow between cards (not after last) -->
+          @if (!last) {
+            <div class="process-arrow" aria-hidden="true">
+              <div class="process-arrow-track">
+                <svg class="process-arrow-svg" viewBox="0 0 24 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Vertical stem -->
+                  <line x1="12" y1="0" x2="12" y2="36" stroke="#c9a84c" stroke-width="2.5" stroke-dasharray="6 4"/>
+                  <!-- Arrowhead filled -->
+                  <path d="M3 33 L12 52 L21 33 Z" fill="#c9a84c"/>
+                </svg>
+              </div>
+              <span class="process-arrow-label">↓ Étape suivante</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── User Profiles in LOGIRAD ── REMOVED per requirements ──
+     (Security & Access / User Profiles section has been removed)
+-->
+
+<!-- ── Functional Modules Detail ─────────────────────── -->
+<section class="section doc-section modules-section" id="modules" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Modules fonctionnels</div>
+      <h2 class="section-title">Modules détaillés de LOGIRAD</h2>
+      <p class="section-sub">
+        Chaque module correspond à un maillon de la chaîne de gestion des recettes non fiscales.
+      </p>
+    </div>
+
+    <div class="modules-accordion">
+      @for (mod of functionalModules; track mod.id; let i = $index) {
+        <div class="mod-panel" [class.is-open]="openModule === mod.id">
+          <button class="mod-header" (click)="toggleModule(mod.id)" type="button">
+            <div class="mod-header-left">
+              <span class="mod-icon">{{ mod.icon }}</span>
+              <span class="mod-title">{{ mod.title }}</span>
+            </div>
+            <span class="mod-chevron">{{ openModule === mod.id ? '▲' : '▼' }}</span>
+          </button>
+          @if (openModule === mod.id) {
+            <div class="mod-body">
+              <p class="mod-overview">{{ mod.overview }}</p>
+              <div class="mod-features">
+                @for (feat of mod.features; track feat.label) {
+                  <div class="mod-feature">
+                    <div class="mod-feature-icon">{{ feat.icon }}</div>
+                    <div>
+                      <div class="mod-feature-label">{{ feat.label }}</div>
+                      <p class="mod-feature-desc">{{ feat.desc }}</p>
+                    </div>
                   </div>
-                  <a [href]="doc.href" target="_blank" rel="noopener" class="doc-preview-download" download>
-                    DOWNLOAD <span class="doc-download-arrow">↓</span>
-                  </a>
-                </div>
+                }
               </div>
             </div>
-          </ng-container>
-          <div class="doc-empty" *ngIf="cat.documents.length === 0">
-            <p>No documents in this category.</p>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Downloads ─────────────────────────────────────── -->
+<section class="section doc-section downloads-section" id="downloads" appScrollIn>
+  <div class="container">
+    <div class="section-header-center">
+      <div class="section-kicker">Ressources</div>
+      <h2 class="section-title">Téléchargements & ressources</h2>
+    </div>
+    <div class="downloads-grid">
+      @for (doc of downloadItems; track doc.title) {
+        <div class="download-card">
+          <div class="download-icon-wrap">{{ doc.icon }}</div>
+          <div class="download-body">
+            <div class="download-tag">{{ doc.tag }}</div>
+            <h4>{{ doc.title }}</h4>
+            <p>{{ doc.desc }}</p>
           </div>
-        </ng-container>
-      </div>
+          <a [href]="doc.href" download class="download-btn">
+            ⬇ Télécharger
+          </a>
+        </div>
+      }
     </div>
   </div>
 </section>
