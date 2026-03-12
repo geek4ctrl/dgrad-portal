@@ -385,11 +385,11 @@
       <div class="security-rules">
         @for (rule of securityRules; track rule.title) {
           <div class="security-rule-card">
-            <div class="security-rule-icon">{{ rule.icon }}</div>
-            <div>
+            <div class="security-rule-header">
+              <div class="security-rule-icon">{{ rule.icon }}</div>
               <strong>{{ rule.title }}</strong>
-              <p>{{ rule.desc }}</p>
             </div>
+            <p>{{ rule.desc }}</p>
           </div>
         }
         <div class="security-change-pw">
