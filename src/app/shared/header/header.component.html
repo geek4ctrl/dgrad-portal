@@ -23,6 +23,7 @@
           [routerLinkActiveOptions]="{ exact: link.exact }"
           (click)="closeMenu()"
         >
+          <span class="nav-link-icon">{{ link.icon }}</span>
           {{ link.label }}
         </a>
       }

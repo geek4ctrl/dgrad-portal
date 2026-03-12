@@ -180,6 +180,9 @@
   align-items: center;
   gap: 0.4rem;
   a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
     padding: 0.5rem 0.9rem;
     border-radius: var(--r-md);
     font-size: 0.875rem;
@@ -199,6 +202,10 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
     }
   }
+}
+.nav-link-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 .btn-access {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%) !important;
