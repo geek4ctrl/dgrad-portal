@@ -153,7 +153,7 @@
     display: grid;
     grid-template-columns: 340px 1fr;
     gap: 2.5rem;
-    align-items: start;
+    align-items: stretch;
     @media (max-width: 960px) { grid-template-columns: 1fr; }
   }
   
