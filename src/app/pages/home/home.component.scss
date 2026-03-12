@@ -548,7 +548,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
   gap: 3.5rem;
-  align-items: start;
+  align-items: stretch;
   @media (max-width: 860px) { grid-template-columns: 1fr; }
 }
 .ext-right { display: flex; align-items: stretch; }
@@ -618,6 +618,8 @@
 .ext-map-wrap { 
   position: sticky; 
   top: 80px;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 860px) { 
     position: relative; 
     top: 0;
@@ -628,6 +630,7 @@
   border-radius: var(--r-lg);
   overflow: hidden;
   min-height: 380px;
+  flex: 1;
   display: flex; align-items: center; justify-content: center;
   @media (max-width: 1024px) { min-height: 340px; }
   @media (max-width: 768px) { min-height: auto; padding: 1.5rem; }
@@ -675,11 +678,13 @@
 .pill-title { font-size: 0.8rem; font-weight: 700; color: var(--white); margin: 0 0 0.15rem; }
 .pill-sub { font-size: 0.78rem; color: rgba(255,255,255,.7); margin: 0; line-height: 1.45; }
 .ext-note {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.1);
   font-size: 0.8rem;
-  color: var(--muted);
+  color: rgba(255,255,255,.65);
   line-height: 1.5;
-  strong { color: var(--navy); }
+  strong { color: var(--gold-light); }
 }
 
 /* ── Newsletter ─────────────────────────────────────── */
