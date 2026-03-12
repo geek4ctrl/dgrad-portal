@@ -499,15 +499,20 @@
   background: var(--gold-pale);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.3rem;
-  margin-bottom: 1rem;
   transition: background 0.22s;
   flex-shrink: 0;
+}
+.svc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 .svc-card h4 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 0.85rem;
+  margin: 0;
   transition: color 0.22s;
   line-height: 1.3;
 }
@@ -1371,14 +1376,16 @@
 }
 
 .app-module-card {
-  background: linear-gradient(160deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
-  border: 1px solid rgba(201,168,76,.22);
-  border-radius: 1rem;
-  padding: 1.6rem 1.35rem;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%),
+    radial-gradient(120% 120% at 10% 0%, rgba(201,168,76,.08) 0%, transparent 45%);
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: 1.1rem;
+  padding: 1.5rem 1.35rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  box-shadow: 0 10px 24px rgba(5, 12, 24, 0.35);
+  box-shadow: 0 12px 28px rgba(5, 12, 24, 0.35);
   position: relative;
   transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
 
@@ -1424,8 +1431,9 @@
     align-items: center;
     justify-content: center;
     margin: 0.35rem 0 0.2rem;
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
   }
 
   h4 {
@@ -1434,14 +1442,14 @@
     color: var(--white);
     font-weight: 700;
     line-height: 1.3;
-    margin: 0;
+    margin: 0.1rem 0 0;
   }
 
   p {
     font-size: 0.8rem;
     color: rgba(255,255,255,.72);
     line-height: 1.55;
-    margin: 0;
+    margin: 0.2rem 0 0;
     flex: 1;
   }
 
@@ -1463,11 +1471,39 @@
 
   @media (max-width: 560px) {
     padding: 1.25rem;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 1rem;
-    .app-module-icon { margin: 0; font-size: 1.25rem; width: 40px; height: 40px; }
-    .app-module-content { flex: 1; }
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+    align-items: center;
+    border-radius: 1rem;
+
+    .app-module-num {
+      align-self: center;
+      font-size: 0.62rem;
+      padding: 0.18rem 0.6rem;
+    }
+    .app-module-icon {
+      margin: 0.1rem 0;
+      font-size: 1.4rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 0.85rem;
+      background: rgba(201,168,76,.12);
+      border-color: rgba(201,168,76,.25);
+    }
+    h4 {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.65);
+    }
+    .app-module-partners {
+      justify-content: center;
+    }
   }
 }
 
@@ -1603,7 +1639,22 @@
     border-radius: 20px;
     align-self: flex-start;
   }
-  .tax-type-icon { font-size: 1.5rem; }
+  .tax-type-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .tax-type-icon {
+    font-size: 1.35rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 0.65rem;
+    background: rgba(255,255,255,.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
   h4 {
     font-family: var(--ff-display);
@@ -1625,27 +1676,40 @@
 // Taxation 4-step workflow ribbon
 .tax-workflow {
   margin-top: 2.5rem;
-  @media (max-width: 700px) { margin-top: 2rem; }
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(201,168,76,.2);
-  border-radius: var(--r-md);
-  padding: 1.5rem 1.75rem;
+  background: linear-gradient(160deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.015) 100%);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 1.1rem;
+  padding: 2rem 2rem;
+  position: relative;
+  overflow: hidden;
 
-  @media (max-width: 500px) {
-    padding: 1.25rem 1.25rem;
-    margin-top: 2rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
   }
+
+  @media (max-width: 700px) { margin-top: 2rem; padding: 1.5rem 1.25rem; }
 }
 
 .tax-workflow-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--gold);
-  letter-spacing: .04em;
-  margin-bottom: 1.25rem;
+  color: var(--gold-light);
+  letter-spacing: .06em;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  text-transform: uppercase;
+
+  span {
+    font-size: 1.1rem;
+    filter: grayscale(0.2);
+  }
 }
 
 .tax-workflow-steps {
@@ -1656,7 +1720,24 @@
 
   @media (max-width: 700px) {
     flex-direction: column;
-    gap: 0.75rem; /* add vertical space so mobile cards are not attached */
+    gap: 0;
+    position: relative;
+    padding-left: 1.8rem;
+
+    // Vertical connecting line
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0.82rem;
+      top: 2rem;
+      bottom: 2rem;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        rgba(201,168,76,.5),
+        rgba(201,168,76,.2)
+      );
+      border-radius: 2px;
+    }
   }
 }
 
@@ -1664,6 +1745,11 @@
   display: flex;
   align-items: center;
   flex: 1;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .tax-wf-inner {
@@ -1672,50 +1758,81 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.4rem;
-  background: rgba(201,168,76,.06);
-  border: 1px solid rgba(201,168,76,.22);
-  border-radius: var(--r-sm);
-  padding: 0.9rem 0.75rem;
-  min-height: 80px;
+  gap: 0.55rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 0.85rem;
+  padding: 1.1rem 0.9rem;
+  min-height: 90px;
   justify-content: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+
+  &:hover {
+    background: rgba(201,168,76,.08);
+    border-color: rgba(201,168,76,.3);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: row;
+    text-align: left;
+    min-height: auto;
+    padding: 1rem 1.1rem;
+    gap: 0.85rem;
+    border-radius: 0.75rem;
+  }
 }
 
 .tax-wf-num {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
   color: var(--navy);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow:
+    0 0 0 4px rgba(201,168,76,.15),
+    0 4px 12px rgba(201,168,76,.25);
+
+  @media (max-width: 700px) {
+    width: 28px;
+    height: 28px;
+    font-size: 0.72rem;
+  }
 }
 
 .tax-wf-label {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(255,255,255,.85);
-  line-height: 1.35;
+  color: rgba(255,255,255,.88);
+  line-height: 1.4;
   margin: 0;
+
+  @media (max-width: 700px) {
+    font-size: 0.82rem;
+    flex: 1;
+  }
 }
 
 .tax-wf-arrow {
   font-size: 1.1rem;
   color: var(--gold);
   padding: 0 0.5rem;
-  opacity: .7;
+  opacity: .6;
   flex-shrink: 0;
 
   @media (max-width: 700px) {
-    transform: rotate(90deg);
-    padding: 0.3rem 0;
-    text-align: center;
     display: flex;
     justify-content: center;
+    padding: 0.15rem 0;
+    font-size: 0.85rem;
+    transform: rotate(90deg);
+    opacity: 0.35;
   }
 }
 
@@ -1826,10 +1943,16 @@
 }
 
 .ordo-step-icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
-  margin-top: 0.05rem;
   line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 0.6rem;
+  background: rgba(255,255,255,.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // Text wrapper — takes all remaining space
@@ -1838,12 +1961,19 @@
   min-width: 0;
 }
 
+.ordo-step-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
 .ordo-step-inner h4 {
   font-family: var(--ff-display);
   font-size: 0.95rem;
   color: var(--gold);
   font-weight: 700;
-  margin: 0 0 0.35rem;
+  margin: 0;
   line-height: 1.3;
 }
 
