@@ -27,19 +27,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       date: 'Depuis 2019',
       title: 'LOGIRAD, la solution intégrée de gestion des recettes non fiscales',
       sub: 'Plateforme web nationale pilotée par la DGRAD pour digitaliser l\'ensemble de la chaîne de mobilisation des recettes administratives, judiciaires, domaniales et de participations.',
-      image: 'assets/images/slide1.svg'
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80'
     },
     {
       date: '1er janvier 2023',
       title: 'Mise en production progressive de <em>LOGIRAD</em> dans les services d\'assiette',
       sub: 'Déploiement de la première phase de la procédure dématérialisée — rendue obligatoire par le décret n°22/18 du 4 mai 2022 — couvrant 5 services d\'assiette sur 51, pour 1 300 utilisateurs.',
-      image: 'assets/images/slide2.svg'
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80'
     },
     {
       date: 'Mars 2024',
       title: 'Version <em>2.0</em> de LOGIRAD : chaîne informatisée des recettes renforcée',
       sub: 'Nouvelle version intégrant la taxation, l\'ordonnancement, le recouvrement, le contrôle, les exonérations et la gestion du contentieux dans un environnement unifié.',
-      image: 'assets/images/slide3.svg'
+      image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80'
     }
   ];
 

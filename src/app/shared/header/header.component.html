@@ -23,7 +23,7 @@
       <div class="nav-logo-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.236L20 8.5v7L12 19.764 4 15.5v-7L12 4.236z"/></svg>
       </div>
-      <div class="nav-logo-text">DGRAD <span>LOGIRAD</span></div>
+      <div class="nav-logo-text">DGRAD</div>
     </a>
     <button type="button" class="nav-toggle" aria-label="Menu" [attr.aria-expanded]="isMenuOpen" (click)="toggleMenu()">
       <span class="nav-toggle-bar"></span>
@@ -31,10 +31,16 @@
       <span class="nav-toggle-bar"></span>
     </button>
     <div class="nav-links" [class.is-open]="isMenuOpen">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Welcome</a>
-      <a routerLink="/galerie" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Gallery</a>
-      <a routerLink="/documentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Documentation</a>
-      <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Contact</a>
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+          (click)="closeMenu()"
+        >
+          {{ link.label }}
+        </a>
+      }
       <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener" class="btn-access">
         Accéder à LOGIRAD
       </a>
