@@ -179,6 +179,7 @@
   gap: 0;
   overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar { display: none; }
 }
 .doc-tab {
@@ -195,6 +196,7 @@
   color: var(--muted);
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: color 0.2s, border-color 0.2s;
   &:hover { color: var(--navy); }
   &.active {
@@ -204,6 +206,29 @@
   }
 }
 .tab-icon { font-size: 1rem; }
+
+@media (max-width: 768px) {
+  .doc-tabs-wrap {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 2rem;
+      background: linear-gradient(to right, transparent, var(--white));
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+  .doc-tab {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.78rem;
+    gap: 0.3rem;
+  }
+  .tab-icon { font-size: 0.85rem; }
+}
 
 /* ── Section common ─────────────────────────────────── */
 .section {

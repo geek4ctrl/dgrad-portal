@@ -13,11 +13,11 @@ export class HeaderComponent {
   isMenuOpen = false;
 
   navLinks = [
-    { path: '/', label: 'Welcome', exact: true },
+    { path: '/', label: 'Accueil', exact: true },
     { path: '/a-propos', label: 'À propos', exact: false },
     { path: '/missions-services', label: 'Missions', exact: false },
     { path: '/documentation', label: 'Documentation', exact: false },
-    { path: '/galerie', label: 'Gallery', exact: false },
+    { path: '/galerie', label: 'Galerie', exact: false },
     { path: '/contact', label: 'Contact', exact: false },
   ];
 
