@@ -4,7 +4,7 @@
 .header-sticky {
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 99999;
   display: block;
 }
 
@@ -87,9 +87,7 @@
 
 /* ── Navbar ─────────────────────────────────────────── */
 .navbar {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.97);
   box-shadow:
     0 1px 0 rgba(13, 27, 46, 0.06),
     0 10px 30px rgba(13, 27, 46, 0.06);
@@ -139,11 +137,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-/* Hamburger: visible only on mobile */
+/* Hamburger: hidden on desktop, visible on mobile */
 .nav-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 44px;
   height: 44px;
@@ -153,6 +152,7 @@
   cursor: pointer;
   border-radius: var(--r-sm);
   transition: background 0.15s;
+  z-index: 100001;
   &:hover {
     background: rgba(13, 27, 46, 0.06);
   }
@@ -225,7 +225,7 @@
   position: fixed;
   inset: 0;
   background: rgba(13, 27, 46, 0.2);
-  z-index: 9997;
+  z-index: 99999;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s, visibility 0.2s;
@@ -240,9 +240,6 @@
 
 /* Mobile: hamburger + overlay menu */
 @media (max-width: 1024px) {
-  .nav-toggle {
-    display: flex;
-  }
   .nav-links {
     position: fixed;
     top: 0;
@@ -257,7 +254,7 @@
     background: #ffffff;
     box-shadow: -4px 0 24px rgba(13, 27, 46, 0.12);
     border-left: 1px solid rgba(13, 27, 46, 0.06);
-    z-index: 9998;
+    z-index: 100000;
     transform: translateX(110%);
     opacity: 0;
     visibility: hidden;
@@ -290,6 +287,9 @@
   }
 }
 @media (min-width: 1025px) {
+  .nav-toggle {
+    display: none;
+  }
   .nav-links {
     position: relative;
     width: auto;
@@ -298,6 +298,8 @@
     box-shadow: none;
     transform: none;
     visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
     overflow-y: visible;
   }
 }
