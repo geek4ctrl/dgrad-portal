@@ -189,7 +189,6 @@
             <h4>{{ profile.name }}</h4>
             <p>{{ profile.description }}</p>
           </div>
-          <div class="profile-badge">{{ profile.badge }}</div>
         </div>
       }
     </div>
@@ -244,7 +243,6 @@
     <div class="tax-types-grid">
       @for (tt of taxationTypes; track tt.label) {
         <div class="tax-type-card">
-          <div class="tax-type-badge" [style.background]="tt.color">{{ tt.tag }}</div>
           <div class="tax-type-icon">{{ tt.icon }}</div>
           <h4>{{ tt.label }}</h4>
           <p>{{ tt.desc }}</p>
