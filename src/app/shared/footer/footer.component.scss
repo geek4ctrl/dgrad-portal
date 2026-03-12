@@ -13,6 +13,10 @@
   grid-template-columns: 2fr 1fr 1.4fr;
   gap: 2.5rem;
   padding-bottom: 3rem;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -30,46 +34,54 @@
   margin-bottom: 1rem;
 }
 .footer-logo-icon {
-  width: 34px;
-  height: 34px;
-  background: var(--navy-light);
-  border-radius: 0.4rem;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201,168,76,0.2) 100%);
+  border-radius: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   svg {
     width: 18px;
     fill: var(--gold);
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
   }
 }
 .footer-logo-text {
   font-family: var(--ff-display);
   color: var(--white);
-  font-size: 1rem;
-  font-weight: 700;
-  span {
-    color: var(--gold);
-  }
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .footer-desc {
   line-height: 1.65;
   margin-bottom: 1.25rem;
   max-width: 300px;
+  @media (max-width: 700px) {
+    max-width: 100%;
+  }
 }
 .footer-socials {
   display: flex;
   gap: 0.6rem;
   a {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     svg {
       width: 16px;
       height: 16px;
@@ -78,6 +90,9 @@
     &:hover {
       background: var(--gold);
       color: var(--navy);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(201, 168, 76, 0.3);
     }
   }
 }

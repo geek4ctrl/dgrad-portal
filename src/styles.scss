@@ -1,5 +1,5 @@
 :root {
-  /* DGRAD/LOGIRAD design tokens (used by header, footer, home) */
+  /* DGRAD/LOGIRAD design tokens */
   --navy: #0d1b2e;
   --navy-mid: #152440;
   --navy-light: #1e3458;
@@ -10,14 +10,8 @@
   --white: #ffffff;
   --muted: #8a96a8;
   --text: #1c2430;
-  --ff-display: 'Inter', system-ui, sans-serif;
-  --ff-body: 'Inter', system-ui, sans-serif;
-  --r-sm: 0.5rem;
-  --r-md: 0.875rem;
-  --r-lg: 1.5rem;
-  --shadow-sm: 0 2px 12px rgba(13, 27, 46, 0.08);
-  --shadow-md: 0 8px 32px rgba(13, 27, 46, 0.14);
 
+  /* Color system */
   --color-primary: #003366;
   --color-primary-dark: #001a33;
   --color-accent: #ffd85a;
@@ -30,30 +24,26 @@
   --color-text-main: #1c2430;
   --color-text-muted: #5c6573;
 
-  /* DGRAD/LOGIRAD design tokens (header, footer, home) */
-  --navy: #0d1b2e;
-  --navy-mid: #152440;
-  --navy-light: #1e3458;
-  --gold: #c9a84c;
-  --gold-light: #e4c776;
-  --gold-pale: #f5e9c8;
-  --shadow-sm: 0 2px 12px rgba(13, 27, 46, 0.08);
+  /* Typography */
   --ff-display: 'Inter', system-ui, sans-serif;
   --ff-body: 'Inter', system-ui, sans-serif;
-  --r-sm: 0.5rem;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
+  /* Radius */
+  --r-sm: 0.5rem;
+  --r-md: 0.875rem;
+  --r-lg: 1.5rem;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
   --radius-xl: 1.75rem;
 
+  /* Shadows */
   --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
   --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.12);
   --shadow-card: 0 12px 40px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.18);
-
-  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 *,
@@ -70,8 +60,13 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-text-main);
-  background: radial-gradient(circle at top, #f0f4ff 0, #f3f5fa 40%, #f9fafb 100%);
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(13, 27, 46, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at top, #f0f4ff 0, #f3f5fa 40%, #f9fafb 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -125,11 +120,29 @@ p {
 /* ── Interactive: buttons and links ───────────────────── */
 a:not(.nav-links a):not(.topbar-socials a):not(.footer-socials a),
 button {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 a:not(.nav-links a):not(.topbar-socials a):not(.footer-socials a):active,
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
+}
+
+/* ── Beautiful focus states ───────────────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── Smooth scrolling ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Selection styling ────────────────────────────────── */
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: var(--navy);
 }
 
 @media (max-width: 600px) {
@@ -151,6 +164,76 @@ img, video, object {
 }
 iframe {
   max-width: 100%;
+}
+
+/* ── Enhanced Responsive Utilities ─────────────────── */
+
+/* Fluid typography scale */
+html {
+  font-size: 16px;
+}
+@media (max-width: 1200px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 900px) {
+  html { font-size: 14px; }
+}
+@media (max-width: 600px) {
+  html { font-size: 13px; }
+}
+
+/* Touch-friendly tap targets on mobile */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Responsive container adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Responsive section headers */
+@media (max-width: 640px) {
+  .section-header {
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive tables */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
 }
 
 /* ── Interactive scroll-in animations ───────────────── */

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  private router = inject(Router);
   isMenuOpen = false;
+
+  navLinks = [
+    { path: '/', label: 'Accueil', exact: true },
+    { path: '/a-propos', label: 'À propos', exact: false },
+    { path: '/missions-services', label: 'Missions', exact: false },
+    { path: '/documentation', label: 'Documentation', exact: false },
+    { path: '/galerie', label: 'Galerie', exact: false },
+    { path: '/contact', label: 'Contact', exact: false },
+  ];
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -17,5 +27,9 @@ export class HeaderComponent {
 
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  isActive(path: string): boolean {
+    return this.router.url === path || (path !== '/' && this.router.url.startsWith(path));
   }
 }

@@ -24,22 +24,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   // ── Hero Slides ────────────────────────────────────────
   slides: Slide[] = [
     {
-      date: 'Depuis 2019',
-      title: 'LOGIRAD, la solution intégrée de gestion des recettes non fiscales',
-      sub: 'Plateforme web nationale pilotée par la DGRAD pour digitaliser l\'ensemble de la chaîne de mobilisation des recettes administratives, judiciaires, domaniales et de participations.',
-      image: 'assets/images/slide1.svg'
+      date: 'Depuis 2003',
+      title: '<em>DGRAD</em> — Direction Générale des Recettes Administratives, Judiciaires, Domaniales et de Participations',
+      sub: 'Service public chargé de l\'assiette, de la liquidation, de l\'ordonnancement et du recouvrement des recettes non fiscales de la République Démocratique du Congo.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80'
     },
     {
-      date: '1er janvier 2023',
-      title: 'Mise en production progressive de <em>LOGIRAD</em> dans les services d\'assiette',
-      sub: 'Déploiement de la première phase de la procédure dématérialisée — rendue obligatoire par le décret n°22/18 du 4 mai 2022 — couvrant 5 services d\'assiette sur 51, pour 1 300 utilisateurs.',
-      image: 'assets/images/slide2.svg'
+      date: 'Décret n°0058 du 27 décembre 1995',
+      title: 'Mobiliser les <em>recettes non fiscales</em> pour le développement de la RDC',
+      sub: 'La DGRAD assure la constatation, la liquidation et le recouvrement de toutes les recettes non fiscales dues au Trésor public, en collaboration avec les services d\'assiette et les intervenants financiers.',
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80'
     },
     {
-      date: 'Mars 2024',
-      title: 'Version <em>2.0</em> de LOGIRAD : chaîne informatisée des recettes renforcée',
-      sub: 'Nouvelle version intégrant la taxation, l\'ordonnancement, le recouvrement, le contrôle, les exonérations et la gestion du contentieux dans un environnement unifié.',
-      image: 'assets/images/slide3.svg'
+      date: 'Déploiement national',
+      title: '<em>LOGIRAD</em> : la plateforme numérique au service de la transparence',
+      sub: 'Outil informatique de gestion des recettes rendu obligatoire par le décret n°22/18 du 4 mai 2022, déployé progressivement dans les 26 provinces avec plus de 6 000 utilisateurs formés.',
+      image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80'
     }
   ];
 

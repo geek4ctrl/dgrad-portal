@@ -1,20 +1,5 @@
 <header class="header-sticky">
 <div class="nav-backdrop" [class.is-visible]="isMenuOpen" (click)="closeMenu()" aria-hidden="true"></div>
-<!-- ── Topbar ─────────────────────────────────────────── -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="topbar-left">
-      <span>📞 +243 (21) 000 0000</span>
-      <span>🕐 LUNDI – VENDREDI 7:30 – 18:30</span>
-    </div>
-    <div class="topbar-socials">
-      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    </div>
-  </div>
-</div>
 
 <!-- ── Navbar ─────────────────────────────────────────── -->
 <nav class="navbar">
@@ -23,7 +8,7 @@
       <div class="nav-logo-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.236L20 8.5v7L12 19.764 4 15.5v-7L12 4.236z"/></svg>
       </div>
-      <div class="nav-logo-text">DGRAD <span>LOGIRAD</span></div>
+      <div class="nav-logo-text">DGRAD</div>
     </a>
     <button type="button" class="nav-toggle" aria-label="Menu" [attr.aria-expanded]="isMenuOpen" (click)="toggleMenu()">
       <span class="nav-toggle-bar"></span>
@@ -31,10 +16,17 @@
       <span class="nav-toggle-bar"></span>
     </button>
     <div class="nav-links" [class.is-open]="isMenuOpen">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Welcome</a>
-      <a routerLink="/galerie" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Gallery</a>
-      <a routerLink="/documentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Documentation</a>
-      <a routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Contact</a>
+      @for (link of navLinks; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+          (click)="closeMenu()"
+        >
+          <span class="nav-link-icon">{{ link.icon }}</span>
+          {{ link.label }}
+        </a>
+      }
       <a href="https://logirad.dgrad.cd" target="_blank" rel="noopener" class="btn-access">
         Accéder à LOGIRAD
       </a>

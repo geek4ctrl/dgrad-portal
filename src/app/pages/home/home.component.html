@@ -189,7 +189,6 @@
             <h4>{{ profile.name }}</h4>
             <p>{{ profile.description }}</p>
           </div>
-          <div class="profile-badge">{{ profile.badge }}</div>
         </div>
       }
     </div>
@@ -215,8 +214,10 @@
     <div class="services-grid">
       @for (svc of serviceCards; track svc.title) {
         <div class="svc-card">
-          <div class="svc-icon-wrap">{{ svc.icon }}</div>
-          <h4>{{ svc.title }}</h4>
+          <div class="svc-card-header">
+            <div class="svc-icon-wrap">{{ svc.icon }}</div>
+            <h4>{{ svc.title }}</h4>
+          </div>
           <ul>
             @for (item of svc.items; track item) {
               <li>{{ item }}</li>
@@ -244,9 +245,10 @@
     <div class="tax-types-grid">
       @for (tt of taxationTypes; track tt.label) {
         <div class="tax-type-card">
-          <div class="tax-type-badge" [style.background]="tt.color">{{ tt.tag }}</div>
-          <div class="tax-type-icon">{{ tt.icon }}</div>
-          <h4>{{ tt.label }}</h4>
+          <div class="tax-type-header">
+            <div class="tax-type-icon">{{ tt.icon }}</div>
+            <h4>{{ tt.label }}</h4>
+          </div>
           <p>{{ tt.desc }}</p>
         </div>
       }
@@ -303,9 +305,11 @@
           <div class="ordo-step">
             <div class="ordo-step-inner">
               <div class="ordo-step-num">{{ step.num }}</div>
-              <div class="ordo-step-icon">{{ step.icon }}</div>
               <div class="ordo-step-text">
-                <h4>{{ step.title }}</h4>
+                <div class="ordo-step-title-row">
+                  <div class="ordo-step-icon">{{ step.icon }}</div>
+                  <h4>{{ step.title }}</h4>
+                </div>
                 <p>{{ step.desc }}</p>
               </div>
             </div>
@@ -381,11 +385,11 @@
       <div class="security-rules">
         @for (rule of securityRules; track rule.title) {
           <div class="security-rule-card">
-            <div class="security-rule-icon">{{ rule.icon }}</div>
-            <div>
+            <div class="security-rule-header">
+              <div class="security-rule-icon">{{ rule.icon }}</div>
               <strong>{{ rule.title }}</strong>
-              <p>{{ rule.desc }}</p>
             </div>
+            <p>{{ rule.desc }}</p>
           </div>
         }
         <div class="security-change-pw">
@@ -508,12 +512,12 @@
                 </div>
               </div>
             </div>
+            <p class="ext-note">
+              <strong>Formation continue :</strong> Plus de 516 agents formés en 2024,
+              incluant 157 pour le Kasaï Oriental/Lomami/Sankuru à Mbuji-Mayi.
+            </p>
           </div>
         </div>
-        <p class="ext-note">
-          <strong>Formation continue :</strong> Plus de 516 agents formés en 2024,
-          incluant 157 pour le Kasaï Oriental/Lomami/Sankuru à Mbuji-Mayi.
-        </p>
       </div>
       <div class="ext-right">
         <div class="ext-info-card">
